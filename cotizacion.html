@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cotización de Servicios - Jacob el Plomero</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div><strong>Jacob el Plomero</strong></div>
+        <div>
+          <a href="index.html" class="cuadro-boton">Inicio</a>
+          <a href="servicios.html" class="cuadro-boton">Servicios</a>
+          <a href="cotizacion.html" class="cuadro-boton">cotizacion</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="cotizacion-container">
+      <h2>Solicita tu Cotización</h2>
+      <div class="cotizacion-form">
+        <div class="form-group">
+          <label for="nombre">Nombre (Opcional):</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" />
+        </div>
+        <div class="form-group">
+          <label for="fecha">Fecha:</label>
+          <input type="date" id="fecha" />
+        </div>
+        <div class="form-group">
+          <label for="numeroCotizacion">Número de Cotización:</label>
+          <input
+            type="text"
+            id="numeroCotizacion"
+            value="COT-2025-001"
+            readonly
+          />
+        </div>
+
+        <h3>Selecciona los Servicios:</h3>
+        <div id="servicios-lista">
+          <!-- Los servicios se insertarán aquí dinámicamente con JavaScript -->
+        </div>
+
+        <div class="cotizacion-resumen">
+          <h3>Resumen de Cotización:</h3>
+          <ul id="servicios-seleccionados">
+            <!-- Los servicios seleccionados se mostrarán aquí -->
+          </ul>
+          <div class="total">
+            <strong>Total:</strong> <span id="total-precio">0.00 COP</span>
+          </div>
+        </div>
+
+        <div class="cotizacion-botones">
+          <a href="#" id="whatsapp-cotizacion" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Enviar Cotización por WhatsApp
+          </a>
+          <a href="tel:+34617581180" class="call-btn">
+            <i class="fas fa-phone"></i> Llamar a Jacob el Plomero
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Jacob el Plomero</p>
+      <p>Contacto: <a href="tel:+34617581180">+34 617 58 11 80</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

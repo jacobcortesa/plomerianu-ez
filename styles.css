@@ -1,0 +1,643 @@
+/*
+  ESTILOS GLOBALES Y RESET
+  --------------------------------------------------
+  Reseteo básico para asegurar la consistencia entre navegadores.
+*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif; /* Fuente principal para el cuerpo */
+  line-height: 1.6;
+  color: #333;
+  background: #f4f4f4;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", sans-serif; /* Fuente para títulos */
+  color: #0056a3;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/*
+  PALETA DE COLORES
+  --------------------------------------------------
+  Definición de colores principales y secundarios para fácil modificación.
+*/
+:root {
+  --primary-color: #007bff; /* Azul principal */
+  --secondary-color: #6c757d; /* Gris secundario */
+  --accent-color: #28a745; /* Verde acento */
+  --background-color: #f8f9fa; /* Fondo claro */
+  --text-color: #343a40; /* Texto principal */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/*
+  ESTILOS DEL ENCABEZADO (HEADER) Y NAVEGACIÓN (NAV)
+  --------------------------------------------------
+  Estilos para el encabezado principal y la navegación.
+*/
+header {
+  background: #fff;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav strong {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+nav div a {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+nav div a:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/*
+  ESTILOS DE LA SECCIÓN HERO
+  --------------------------------------------------
+  Estilos para la sección principal de la página de inicio.
+*/
+.hero {
+  background: url("https://i.imgur.com/random.jpg") center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero * {
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero .cta {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--accent-color);
+  color: #fff;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.hero .cta:hover {
+  transform: translateY(-3px);
+}
+
+/*
+  ESTILOS DE LA SECCIÓN DE SERVICIOS (INDEX.HTML)
+  --------------------------------------------------
+  Estilos para la sección de servicios en la página de inicio.
+*/
+.services {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.service {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.service img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.service img:hover {
+  transform: scale(1.05);
+}
+
+.service h3 {
+  margin: 1.5rem 0;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.service p {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+/*
+  ESTILOS DE LA SECCIÓN DE INFORMACIÓN/VALORES
+  --------------------------------------------------
+  Estilos para la sección de información adicional con iconos.
+*/
+.info {
+  background: var(--background-color);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.features {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.feature {
+  width: 300px;
+  text-align: center;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.feature i {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+/*
+  ESTILOS DEL PIE DE PÁGINA (FOOTER)
+  --------------------------------------------------
+  Estilos para el pie de página.
+*/
+footer {
+  background-color: #003b6f;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+/*
+  ESTILOS DEL BOTÓN FLOTANTE DE WHATSAPP
+  --------------------------------------------------
+  Estilos para el botón flotante de WhatsApp.
+*/
+.whatsapp-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #25d366;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 10px var(--shadow-color);
+}
+
+/*
+  ESTILOS DE LA PÁGINA DE SERVICIOS (SERVICIOS.HTML)
+  --------------------------------------------------
+  Estilos específicos para la página de servicios.
+*/
+.services-grid-container {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.services-grid-container h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--primary-color);
+  font-size: 2.5rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.service-item {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.service-item img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.service-item img:hover {
+  transform: scale(1.05);
+}
+
+.service-item h3 {
+  margin: 1.5rem 0;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.service-item p {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.service-item .price {
+  font-weight: bold;
+  color: var(--accent-color);
+  margin-top: 1rem;
+}
+
+.whatsapp-btn-service {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #25d366;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.whatsapp-btn-service i {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.whatsapp-btn-service:hover {
+  background-color: #128c7e;
+}
+
+/*
+  ESTILOS DE LA PÁGINA DE COTIZACIÓN (COTIZACION.HTML)
+  --------------------------------------------------
+  Estilos específicos para la página de cotización.
+*/
+.cotizacion-container {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 3rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.cotizacion-container h2 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 2.5rem;
+}
+
+.cotizacion-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#servicios-lista {
+  margin-bottom: 2rem;
+}
+
+.servicio-item {
+  background: #f9f9f9;
+  padding: 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.servicio-item label {
+  margin-left: 0.75rem;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.cotizacion-resumen {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.cotizacion-resumen h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+#servicios-seleccionados {
+  list-style: none;
+  padding: 0;
+}
+
+#servicios-seleccionados li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+#servicios-seleccionados li:last-child {
+  border-bottom: none;
+}
+
+.total {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+  text-align: right;
+}
+
+.total span {
+  color: var(--accent-color);
+}
+
+.cotizacion-botones {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.cotizacion-botones a {
+  display: inline-block;
+  margin: 0 1rem;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cotizacion-botones .whatsapp-btn {
+  background-color: #25d366;
+  color: #fff;
+}
+
+.cotizacion-botones .whatsapp-btn:hover {
+  background-color: #128c7e;
+}
+
+.cotizacion-botones .call-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.cotizacion-botones .call-btn:hover {
+  background-color: #0056b3;
+}
+
+/*
+  ESTILOS RESPONSIVOS (MEDIA QUERIES)
+  --------------------------------------------------
+  Adaptación del diseño a diferentes tamaños de pantalla.
+*/
+/* Menú hamburguesa (solo CSS para mostrar/ocultar) */
+.menu-toggle {
+  display: none; /* Oculto por defecto */
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+/* Ocultar los enlaces en pantallas pequeñas */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    padding: 1rem;
+  }
+
+  .nav-links a {
+    margin: 0.5rem 0;
+    display: block;
+    text-align: center;
+  }
+
+  .menu-toggle {
+    display: flex; /* Mostrar el menú hamburguesa */
+  }
+}
+
+/* Estilos para cuando el menú está activo (necesitaría JS para la clase "active") */
+.nav-links.active {
+  display: flex; /* Mostrar los enlaces */
+}
+
+/* Rotar las líneas del menú hamburguesa cuando está activo (necesitaría JS) */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Pantallas más pequeñas (móviles) */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav strong {
+    margin-bottom: 1rem;
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+  }
+
+  .features {
+    flex-direction: column;
+  }
+
+  .feature {
+    width: 100%;
+  }
+
+  .cotizacion-form {
+    padding: 1rem;
+  }
+
+  .cotizacion-botones a {
+    display: block;
+    margin: 1rem 0;
+    text-align: center;
+  }
+}
+
+/* Pantallas aún más pequeñas (móviles pequeños) */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+/*
+  CORRECCIÓN DE UBICACIÓN Y DATOS DE CONTACTO
+  --------------------------------------------------
+  Estos datos deben ser actualizados en los archivos HTML.
+  Aquí solo se provee el CSS para el diseño.
+*/
+/* No hay estilos CSS específicos para la ubicación, ya que se actualiza en el HTML */
