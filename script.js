@@ -156,15 +156,20 @@ document.addEventListener("DOMContentLoaded", function () {
   mostrarServicios();
 });
 
-// Activar menú hamburguesa
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
+
+//aqui es ml mas nuevo//
+<nav>
+  <div class="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
   
-  if(menuToggle && navLinks) {
-    menuToggle.addEventListener('click', function() {
-      this.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
-  }
-});
+  <div class="nav-brand">Señor Jhon</div>
+  
+  <div class="nav-links">
+    <a href="index.html" class="active">Inicio</a> <!-- Añade class="active" a la página actual -->
+    <a href="servicios.html">Servicios</a>
+    <a href="cotizacion.html">Cotización</a>
+  </div>
+</nav>
