@@ -156,56 +156,69 @@ document.addEventListener("DOMContentLoaded", function () {
   mostrarServicios();
 });
 
-
 //aqui es ml mas nuevo//
-// Control del menú hamburguesa
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
 
-    menuToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
+// Versión mejorada con detección de clics y errores
+document.addEventListener("DOMContentLoaded", function () {
+  // Elementos del menú
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
 
-    // Cerrar menú al hacer clic en un enlace (solo en móvil)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            if(window.innerWidth <= 768) {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
-    });
-
-    // Marcar página activa
-    document.addEventListener('DOMContentLoaded', function() {
-  // Control del menú hamburguesa
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  if(menuToggle && navLinks) {
-    menuToggle.addEventListener('click', function() {
-      this.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
-
-    // Cerrar menú al hacer clic en enlace (solo móvil)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', function() {
-        if(window.innerWidth <= 768) {
-          menuToggle.classList.remove('active');
-          navLinks.classList.remove('active');
-        }
-      });
-    });
+  // Verificar que los elementos existen
+  if (!menuToggle || !navLinks) {
+    console.error("Error: No se encontraron los elementos del menú");
+    return;
   }
 
+  // Función para alternar el menú
+  function toggleMenu() {
+    menuToggle.classList.toggle("active");
+    navLinks.classList.toggle("active");
+
+    // Bloquear scroll cuando el menú está abierto
+    document.body.style.overflow = navLinks.classList.contains("active")
+      ? "hidden"
+      : "";
+  }
+
+  // Evento de clic en el botón hamburguesa
+  menuToggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", function () {
+      if (window.innerWidth <= 768) {
+        toggleMenu();
+      }
+    });
+  });
+
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener("click", function (e) {
+    if (
+      navLinks.classList.contains("active") &&
+      !e.target.closest(".nav-links") &&
+      !e.target.closest(".menu-toggle")
+    ) {
+      toggleMenu();
+    }
+  });
+
   // Marcar página activa
-  const currentPage = location.pathname.split('/').pop();
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    if(link.getAttribute('href') === currentPage) {
-      link.classList.add('active');
+  const currentPage = location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+
+  // Redimensionamiento de pantalla
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 768 && navLinks.classList.contains("active")) {
+      toggleMenu();
     }
   });
 });
