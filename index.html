@@ -16,32 +16,27 @@
   <body>
     <!-- Encabezado con logo, eslogan y menú responsive -->
     <header>
-      <nav>
-        <div class="nav-header">
-          <!-- Botón hamburguesa (izquierda) -->
-          <button class="menu-toggle" aria-label="Menú móvil">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-
-          <!-- Logo (centro) -->
-          <div class="brand-slogan">
-            <div class="brand">Señor Jhon</div>
-          </div>
-
-          <!-- Logo adicional (derecha) - Solo visible en móvil -->
-          <div class="mobile-logo">
-            <img src="img/logo-mobile.png" alt="Logo" />
-          </div>
+      <!-- Menú de navegación -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo/Marca -->
+            <div class="navbar-brand">Señor Jhon</div>
+            
+            <!-- Botón Hamburguesa -->
+            <button class="hamburger-btn">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <!-- Enlaces de navegación -->
+            <div class="navbar-links">
+                <a href="index.html">Inicio</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="cotizacion.html">Cotización</a>
+            </div>
         </div>
-
-        <div class="nav-links">
-          <a href="index.html">Inicio</a>
-          <a href="servicios.html">Servicios</a>
-          <a href="cotizacion.html">Cotización</a>
-        </div>
-      </nav>
+    </nav>
     </header>
 
     <section class="services" id="servicios">
