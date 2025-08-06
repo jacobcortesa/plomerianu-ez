@@ -225,3 +225,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+
+
+// modo aca seria lo nuevo//
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle.addEventListener('click', function() {
+    // Alternar clase 'active' en el botón y el menú
+    menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    
+    // Bloquear el scroll del body cuando el menú está abierto
+    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+  });
+
+  // Cerrar menú al hacer clic en un enlace (opcional)
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+});
