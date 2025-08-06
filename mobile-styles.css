@@ -90,3 +90,144 @@
         overflow: hidden;
     }
 }
+
+/* Estilos específicos para la página de servicios */
+.services-grid-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.service-item {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.service-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff6b6b;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.service-content {
+    padding: 20px;
+}
+
+.service-features {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.service-features i {
+    margin-right: 5px;
+}
+
+.service-description {
+    color: #666;
+    margin: 15px 0;
+}
+
+.service-price-container {
+    margin: 20px 0;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.price span {
+    color: #2e86de;
+}
+
+.price-note {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 5px;
+}
+
+.whatsapp-btn-service {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #25D366;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.whatsapp-btn-service:hover {
+    background: #128C7E;
+}
+
+.whatsapp-btn-service i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* Estilos del footer */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #4dabf7;
+    text-decoration: none;
+}
