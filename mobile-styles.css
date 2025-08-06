@@ -1,3 +1,64 @@
+
+/* =============================================
+   MENÚ VERTICAL MEJORADO PARA MÓVIL
+   - Diseño vertical claro
+   - Bordes redondeados
+   - Colores profesionales
+   - Efectos al tocar
+   ============================================= */
+
+@media (max-width: 768px) {
+  /* Contenedor principal del menú */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Espacio entre botones */
+    width: 90%;
+    margin: 15px auto;
+    padding: 10px;
+  }
+
+  /* Estilo de cada botón */
+  .nav-links a {
+    display: block;
+    padding: 15px 20px;
+    text-align: center;
+    background: #ffffff;
+    color: #2c3e50 !important; /* Color de texto azul oscuro */
+    border: 2px solid #3498db; /* Borde azul */
+    border-radius: 8px; /* Esquinas redondeadas */
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+
+  /* Efecto al pasar el dedo */
+  .nav-links a:hover, 
+  .nav-links a:focus {
+    background: #3498db; /* Fondo azul al tocar */
+    color: white !important;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+
+  /* Botón activo (para la página actual) */
+  .nav-links a.active {
+    background: #2980b9;
+    color: white !important;
+    border-color: #2980b9;
+  }
+
+  /* Animación del menú hamburguesa */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+    background: #e74c3c; /* Rojo cuando está activo */
+  }
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+    background: #e74c3c; /* Rojo cuando está activo */
+  }
+}
 /* ======================
    MENÚ MÓVIL DEFINITIVO
    ====================== */
