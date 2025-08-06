@@ -1,6 +1,57 @@
 document.addEventListener("DOMContentLoaded", function() {
     // ==================== MENÚ HAMBURGUESA ====================
     const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    
+    if (menuToggle && navLinks) {
+        const overlay = document.createElement('div');
+        overlay.className = 'nav-overlay';
+        document.body.appendChild(overlay);
+
+        function toggleMenu() {
+            menuToggle.classList.toggle("active");
+            navLinks.classList.toggle("active");
+            overlay.classList.toggle("active");
+            document.body.style.overflow = navLinks.classList.contains("active") ? "hidden" : "auto";
+        }
+
+        menuToggle.addEventListener("click", function(e) {
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        overlay.addEventListener("click", toggleMenu);
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", function() {
+                if (window.innerWidth <= 768) toggleMenu();
+            });
+        });
+
+        window.addEventListener("resize", function() {
+            if (window.innerWidth > 768 && navLinks.classList.contains("active")) {
+                toggleMenu();
+            }
+        });
+    }
+
+    // ==================== LÓGICA DE COTIZACIÓN ====================
+    // (Mantengo esta parte igual que en tu código original)
+    const serviciosData = [
+        {
+            id: 1,
+            nombre: "Reparación de Fugas",
+            descripcion: "Detección y reparación de fugas de agua en tuberías, baños, etc.",
+            precio: 200000
+        },
+        // ... resto de tus servicios ...
+    ];
+
+    // ... resto de tu lógica de cotización ...
+});
+document.addEventListener("DOMContentLoaded", function() {
+    // ==================== MENÚ HAMBURGUESA ====================
+    const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.getElementById("nav-links");
     
     if (menuToggle && navLinks) {
