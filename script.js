@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // ==================== MENÚ HAMBURGUESA ====================
+    // ==================== MENÚ HAMBURGUESA MEJORADO ====================
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
     
@@ -35,58 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // ==================== LÓGICA DE COTIZACIÓN ====================
-    // (Mantengo esta parte igual que en tu código original)
-    const serviciosData = [
-        {
-            id: 1,
-            nombre: "Reparación de Fugas",
-            descripcion: "Detección y reparación de fugas de agua en tuberías, baños, etc.",
-            precio: 200000
-        },
-        // ... resto de tus servicios ...
-    ];
-
-    // ... resto de tu lógica de cotización ...
-});
-document.addEventListener("DOMContentLoaded", function() {
-    // ==================== MENÚ HAMBURGUESA ====================
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.getElementById("nav-links");
-    
-    if (menuToggle && navLinks) {
-        const overlay = document.createElement('div');
-        overlay.className = 'nav-overlay';
-        document.body.appendChild(overlay);
-
-        function toggleMenu() {
-            menuToggle.classList.toggle("active");
-            navLinks.classList.toggle("active");
-            overlay.classList.toggle("active");
-            document.body.style.overflow = navLinks.classList.contains("active") ? "hidden" : "";
-        }
-
-        menuToggle.addEventListener("click", function(e) {
-            e.stopPropagation();
-            toggleMenu();
-        });
-
-        overlay.addEventListener("click", toggleMenu);
-
-        document.querySelectorAll(".nav-link").forEach(link => {
-            link.addEventListener("click", function() {
-                if (window.innerWidth <= 768) toggleMenu();
-            });
-        });
-
-        window.addEventListener("resize", function() {
-            if (window.innerWidth > 768 && navLinks.classList.contains("active")) {
-                toggleMenu();
-            }
-        });
-    }
-
-    // ==================== LÓGICA DE COTIZACIÓN ====================
+    // ==================== LÓGICA DE COTIZACIÓN (PARA PÁGINA COTIZACION.HTML) ====================
     const serviciosData = [
         {
             id: 1,
@@ -126,13 +75,14 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     ];
 
+    // Solo ejecuta la lógica de cotización si estamos en la página correspondiente
     const listaServicios = document.getElementById("lista-servicios");
-    const serviciosSeleccionadosList = document.getElementById("servicios-seleccionados");
-    const totalCotizacion = document.getElementById("total-cotizacion");
-    const botonWhatsapp = document.getElementById("boton-whatsapp");
-    const numeroCotizacionInput = document.getElementById("numero-cotizacion");
-
     if (listaServicios) {
+        const serviciosSeleccionadosList = document.getElementById("servicios-seleccionados");
+        const totalCotizacion = document.getElementById("total-cotizacion");
+        const botonWhatsapp = document.getElementById("boton-whatsapp");
+        const numeroCotizacionInput = document.getElementById("numero-cotizacion");
+
         let serviciosSeleccionados = [];
         let total = 0;
 
@@ -224,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function() {
             window.open(url, '_blank');
         }
 
-        // Inicialización
+        // Inicialización de la cotización
         numeroCotizacionInput.value = generarNumeroCotizacion();
         document.getElementById('fecha-cotizacion').valueAsDate = new Date();
         mostrarServicios();
@@ -235,4 +185,10 @@ document.addEventListener("DOMContentLoaded", function() {
             enviarPorWhatsapp();
         });
     }
+
+    // ==================== OTRAS FUNCIONALIDADES PARA OTRAS PÁGINAS ====================
+    // Aquí puedes agregar más lógica específica para otras páginas
+    // Por ejemplo:
+    // if (document.getElementById('galeria')) { ... }
+    // if (document.getElementById('contacto-form')) { ... }
 });
