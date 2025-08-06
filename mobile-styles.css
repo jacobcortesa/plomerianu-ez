@@ -1,328 +1,94 @@
-
-/* MENÚ MÓVIL - SOLO BOTONES */
+/* ======================
+   MENÚ MÓVIL DEFINITIVO
+   ====================== */
 @media (max-width: 768px) {
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    background: #f8f9fa;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  /* Contenedor principal del menú */
+  nav {
+    flex-wrap: wrap;
+    padding: 10px 15px;
+    position: relative;
   }
 
-  .nav-links a {
-    display: block;
+  /* Logo/Marca */
+  .nav-brand {
+    order: 2;
+    width: 100%;
     text-align: center;
-    padding: 0.8rem;
-    background: #fff;
-    border: 1px solid #e0e0e0;
+    font-size: 1.5rem;
+    padding: 10px 0;
+  }
+
+  /* Botón hamburguesa */
+  .menu-toggle {
+    display: flex;
+    order: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #0056a3;
+    transition: all 0.3s ease;
+  }
+
+  /* Estado activo del menú hamburguesa */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  /* Contenedor de los enlaces */
+  .nav-links {
+    order: 3;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-top: 0;
+  }
+
+  /* Estado abierto del menú */
+  .nav-links.active {
+    max-height: 500px;
+    padding: 15px 0;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  /* Estilos de los enlaces */
+  .nav-links a {
+    width: 90%;
+    padding: 12px 15px;
+    margin: 5px 0;
+    text-align: center;
+    background: #f8f9fa;
     border-radius: 6px;
-    font-weight: 600;
     color: #0056a3 !important;
+    font-weight: 600;
+    border: 1px solid #e0e0e0;
     transition: all 0.3s;
   }
 
   .nav-links a:hover {
     background: #0056a3 !important;
     color: white !important;
-    transform: translateY(-2px);
-  }
-}
-/*
-  ESTILOS GLOBALES Y RESET
-  --------------------------------------------------
-*/
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background: #f4f4f4;
-  overflow-x: hidden; /* Previene desbordamiento horizontal */
-}
-
-h1,
-h2,
-h3 {
-  font-family: "Montserrat", sans-serif;
-  color: #0056a3;
-  margin-bottom: 1rem;
-}
-
-a {
-  text-decoration: none;
-  color: #007bff;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: #0056b3;
-}
-
-/*
-  PALETA DE COLORES
-  --------------------------------------------------
-*/
-:root {
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --accent-color: #28a745;
-  --background-color: #f8f9fa;
-  --text-color: #343a40;
-  --shadow-color: rgba(0, 0, 0, 0.1);
-}
-
-/*
-  ENCABEZADO Y NAVEGACIÓN - VERSIÓN MÓVIL CORREGIDA
-  --------------------------------------------------
-*/
-header {
-  background: #fff;
-  box-shadow: 0 2px 5px var(--shadow-color);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  padding: 0.5rem 1rem;
-}
-
-nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
-}
-
-nav strong {
-  font-size: 1.2rem;
-  color: var(--primary-color);
-}
-
-.nav-links {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.nav-links a {
-  padding: 0.5rem;
-  color: var(--primary-color);
-  font-weight: 500;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-.nav-links a:hover {
-  background-color: var(--primary-color);
-  color: #fff;
-}
-
-/* Menú hamburguesa */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  cursor: pointer;
-  z-index: 101;
-}
-
-.menu-toggle span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: var(--primary-color);
-  transition: all 0.3s ease;
-}
-
-/*
-  SECCIÓN PRINCIPAL - AJUSTES PARA MÓVIL
-  --------------------------------------------------
-*/
-.main-content {
-  padding: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.main-content h1 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.main-content p {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-/*
-  SECCIÓN DE SERVICIOS - VERSIÓN MÓVIL
-  --------------------------------------------------
-*/
-.services {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-.service {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px var(--shadow-color);
-}
-
-.service img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.service h3 {
-  font-size: 1.3rem;
-}
-
-/*
-  FORMULARIO DE COTIZACIÓN - VERSIÓN MÓVIL
-  --------------------------------------------------
-*/
-.cotizacion-container {
-  max-width: 100%;
-  margin: 2rem auto;
-  padding: 1rem;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px var(--shadow-color);
-}
-
-.cotizacion-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.servicio-item {
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-/*
-  FOOTER - VERSIÓN MÓVIL
-  --------------------------------------------------
-*/
-footer {
-  padding: 1.5rem;
-  font-size: 0.9rem;
-}
-
-/*
-  BOTÓN DE WHATSAPP - VERSIÓN MÓVIL
-  --------------------------------------------------
-*/
-.whatsapp-btn {
-  width: 60px;
-  height: 60px;
-  font-size: 1.5rem;
-  bottom: 1rem;
-  right: 1rem;
-}
-
-/*
-  MEDIA QUERIES PARA RESPONSIVIDAD
-  --------------------------------------------------
-*/
-@media (max-width: 768px) {
-  /* Menú de navegación móvil */
-  .menu-toggle {
-    display: flex;
-  }
-  
-  .nav-links {
-    position: fixed;
-    top: 60px;
-    left: -100%;
-    width: 80%;
-    height: calc(100vh - 60px);
-    background: #fff;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem 0;
-    transition: left 0.3s ease;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-  }
-  
-  .nav-links.active {
-    left: 0;
-  }
-  
-  .nav-links a {
-    width: 80%;
-    text-align: center;
-    padding: 1rem;
-    margin: 0.5rem 0;
-  }
-  
-  /* Ajustes generales */
-  h1 {
-    font-size: 1.5rem;
-  }
-  
-  h2 {
-    font-size: 1.3rem;
-  }
-  
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .cotizacion-botones a {
-    display: block;
-    width: 100%;
-    margin: 0.5rem 0;
-  }
-}
-
-@media (max-width: 480px) {
-  /* Ajustes para pantallas muy pequeñas */
-  nav strong {
-    font-size: 1rem;
-  }
-  
-  .service {
-    padding: 1rem;
-  }
-  
-  .cotizacion-container {
-    padding: 0.5rem;
-  }
-  
-  .form-group input {
-    padding: 0.5rem;
+    transform: scale(1.02);
   }
 }
