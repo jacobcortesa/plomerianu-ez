@@ -158,28 +158,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //aqui es ml mas nuevo//
 
-// Versión mejorada y corregida del menú móvil
+toggleMenu();
 document.addEventListener("DOMContentLoaded", function () {
   // Elementos del menú
   const menuToggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
-
-  // Verificar que los elementos existen
-  if (!menuToggle || !navLinks) {
-    console.error("Error: No se encontraron los elementos del menú");
-    return;
-  }
+  const body = document.body;
 
   // Función para alternar el menú
   function toggleMenu() {
     menuToggle.classList.toggle("active");
     navLinks.classList.toggle("active");
 
-    // Bloquear scroll cuando el menú está abierto solo en móvil
-    if (window.innerWidth <= 768) {
-      document.body.style.overflow = navLinks.classList.contains("active")
-        ? "hidden"
-        : "";
+    // Bloquear scroll cuando el menú está abierto
+    if (navLinks.classList.contains("active")) {
+      body.style.overflow = "hidden";
+    } else {
+      body.style.overflow = "";
     }
   }
 
@@ -210,57 +205,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Marcar página activa
-  const currentPage = location.pathname.split("/").pop() || "index.html";
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    if (link.getAttribute("href") === currentPage) {
-      link.classList.add("active");
-    }
-  });
-
-  // Redimensionamiento de pantalla - asegurar que el menú se cierre
+  // Redimensionamiento de pantalla
   window.addEventListener("resize", function () {
     if (window.innerWidth > 768 && navLinks.classList.contains("active")) {
       toggleMenu();
     }
   });
 });
-
-// Corrección para el botón de WhatsApp (en la sección de cotización)
-function generarMensajeWhatsApp() {
-  const nombre = nombreInput.value || "Cliente";
-  const fecha = fechaInput.value || new Date().toLocaleDateString();
-  const numeroCotizacion = numeroCotizacionInput.value || "N/A";
-
-  let mensaje = `¡Hola Jacob!\n\nSoy ${nombre} y me interesa la siguiente cotización:\n`;
-  mensaje += `Fecha: ${fecha}\n`;
-  mensaje += `Número de Cotización: ${numeroCotizacion}\n\n`;
-
-  if (serviciosSeleccionadosArray.length === 0) {
-    mensaje += "No se han seleccionado servicios.\n";
-  } else {
-    serviciosSeleccionadosArray.forEach((servicio) => {
-      mensaje += `- ${servicio.nombre} - ${servicio.precio.toLocaleString(
-        "es-CO",
-        {
-          style: "currency",
-          currency: "COP",
-          minimumFractionDigits: 0,
-        }
-      )}\n`;
-    });
-    mensaje += `\nTotal: ${total.toLocaleString("es-CO", {
-      style: "currency",
-      currency: "COP",
-      minimumFractionDigits: 0,
-    })}\n`;
-  }
-
-  mensaje += `\n¡Espero su respuesta!`;
-
-  // URL corregida para WhatsApp
-  const url = `https://api.whatsapp.com/send?phone=573123456789&text=${encodeURIComponent(
-    mensaje
-  )}`;
-  window.open(url, "_blank");
-}
+// Fin del código de menú
+});
