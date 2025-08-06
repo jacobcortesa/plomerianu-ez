@@ -1,414 +1,270 @@
-/* ESTILOS GLOBALES Y RESET */
+/* RESET Y BASE */
 *,
 *::before,
 *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html {
+  font-size: 112.5%;
 }
 
 body {
   font-family: "Roboto", sans-serif;
-  line-height: 1.6;
+  background-color: #f4f4f4;
   color: #333;
-  background: #f4f4f4;
-}
-
-h1,
-h2,
-h3 {
-  font-family: "Montserrat", sans-serif;
-  color: #0056a3;
-  margin-bottom: 1rem;
-}
-
-a {
-  text-decoration: none;
-  color: #007bff;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: #0056b3;
+  line-height: 1.6;
 }
 
 /* PALETA DE COLORES */
 :root {
   --primary-color: #007bff;
-  --secondary-color: #6c757d;
+  --primary-dark: #0056b3;
   --accent-color: #28a745;
-  --background-color: #f8f9fa;
-  --text-color: #343a40;
+  --whatsapp-color: #25d366;
+  --background-color: #ffffff;
   --shadow-color: rgba(0, 0, 0, 0.1);
+  --radius: 0.5rem;
 }
 
-/* ESTILOS DEL ENCABEZADO (HEADER) Y NAVEGACIÓN (NAV) */
+/* HEADER Y NAVEGACIÓN */
 header {
-  background: #fff;
+  background-color: var(--background-color);
   box-shadow: 0 2px 5px var(--shadow-color);
   position: sticky;
   top: 0;
   z-index: 100;
 }
-
 nav {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-nav strong {
-  font-size: 1.5rem;
+.nav-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+.brand-slogan .brand {
+  font-size: 1.8rem;
+  font-weight: bold;
   color: var(--primary-color);
 }
-
-nav div a {
-  margin-left: 1rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--primary-color);
-  border-radius: 5px;
-  color: var(--primary-color);
-  transition: all 0.3s ease;
+.mobile-logo img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 2px 6px var(--shadow-color);
 }
-
-nav div a:hover {
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius);
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+.nav-links a:hover {
   background-color: var(--primary-color);
   color: #fff;
 }
 
-/* ESTILOS DE LA SECCIÓN DE SERVICIOS (INDEX.HTML) */
-.services {
-  max-width: 1200px;
-  margin: 4rem auto;
+/* SECCIÓN DE SERVICIOS EN TABLA */
+.services-table-wrapper {
+  max-width: 1000px;
+  margin: 4rem auto 2rem;
   padding: 0 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
 }
-
-.service {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px var(--shadow-color);
+.services-table-wrapper h2 {
   text-align: center;
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.services-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2rem;
+}
+.services-table td {
+  background-color: var(--background-color);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  vertical-align: top;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.service:hover {
+.services-table td:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px var(--shadow-color);
 }
-
-.service img {
-  max-width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
+.services-table img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
   margin-bottom: 1.5rem;
-  transition: transform 0.3s ease;
 }
-
-.service img:hover {
-  transform: scale(1.05);
-}
-
-.service h3 {
-  margin: 1rem 0;
+.services-table h3 {
   color: var(--primary-color);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
 }
-
-.service p {
+.services-table p {
+  color: #555;
   font-size: 1rem;
-  color: var(--text-color);
+  line-height: 1.4;
 }
 
-/* ESTILOS DE LA SECCIÓN DE INFORMACIÓN/VALORES */
+/* SECCIÓN DE CARACTERÍSTICAS */
 .info {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 4rem 2rem;
-  text-align: center;
+  background-color: var(--background-color);
+  padding: 4rem 3rem;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  margin: 3rem auto;
+  max-width: 1000px;
+  border-radius: var(--radius);
 }
-
 .info h2 {
-  color: #003b6f;
+  text-align: center;
+  color: var(--primary-color);
   font-size: 2.5rem;
-  margin-bottom: 3rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  position: relative;
+  margin-bottom: 2.5rem;
 }
-
-.info h2:after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 4px;
-  background: #003b6f;
-  margin: 1rem auto;
-  border-radius: 2px;
-}
-
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
 }
-
 .feature {
-  background: white;
+  background-color: #f9f9f9;
+  border-radius: var(--radius);
   padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 6px var(--shadow-color);
+  transition: background-color 0.3s ease;
 }
-
 .feature:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  background-color: #f0f8ff;
 }
-
 .feature-icon {
-  width: 80px;
-  height: 80px;
-  background: #003b6f;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-  position: relative;
-  overflow: hidden;
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
 }
-
-.feature-icon:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  transform: rotate(45deg);
-  transition: transform 0.5s ease;
-}
-
-.feature:hover .feature-icon:before {
-  transform: rotate(225deg);
-}
-
-.feature-icon i {
-  font-size: 2.5rem;
-  color: white;
-}
-
 .feature h3 {
-  color: #003b6f;
+  color: var(--primary-dark);
   font-size: 1.3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
-
 .feature p {
   color: #666;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.4;
 }
 
-/* Animaciones para los íconos */
-@keyframes icon-bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* ESTILOS DEL PIE DE PÁGINA (FOOTER) */
+/* FOOTER */
 footer {
-  background-color: #003b6f;
+  background-color: var(--primary-dark);
   color: #fff;
   text-align: center;
-  padding: 2rem;
+  padding: 3rem;
   margin-top: 4rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
+}
+footer a {
+  color: #fff;
+  text-decoration: underline;
 }
 
-footer p {
-  margin-bottom: 0.5rem;
-}
-
-/* ESTILOS DEL BOTÓN FLOTANTE DE WHATSAPP */
+/* BOTÓN FLOTANTE DE WHATSAPP */
 .whatsapp-btn {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  display: inline-flex;
-  align-items: center;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  width: 64px;
+  height: 64px;
+  background-color: var(--whatsapp-color);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
   justify-content: center;
-  background-color: #25d366; /* Color verde oficial de WhatsApp */
-  color: white;
-  width: 60px; /* Tamaño fijo para mantener la forma circular */
-  height: 60px; /* Mismo valor que width para perfecto círculo */
-  padding: 0; /* Eliminamos padding para control exacto del tamaño */
-  border-radius: 50%; /* Esto hace el círculo perfecto */
+  align-items: center;
+  font-size: 1.75rem;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  transition: background-color 0.3s ease;
   text-decoration: none;
-  font-size: 1.8rem; /* Tamaño más grande del icono */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  z-index: 1000; /* Para asegurar que esté sobre otros elementos */
-  border: none; /* Elimina bordes si es un botón */
-  cursor: pointer;
+  z-index: 200;
 }
-
-/* Si estás usando un icono de fuente (Font Awesome o similar) */
-.whatsapp-btn i {
-  margin: 0; /* Elimina cualquier margen del icono */
-}
-
 .whatsapp-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  background-color: #128c7e; /* Color más oscuro al hover */
+  background-color: #1da851;
 }
 
-/* Para agregar el icono de WhatsApp sin depender de fuentes externas */
-.whatsapp-btn::before {
-  content: "📱"; /* Puedes usar el emoji o cambiar por tu icono */
-  /* O usar contenido vacío y background-image con un SVG */
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .services-table-wrapper {
+    padding: 0 1rem;
+  }
+  .services-table {
+    border-spacing: 1rem;
+  }
 }
 
-/* Versión alternativa usando SVG como fondo */
-.whatsapp-btn.icon-svg {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 50%; /* Tamaño del icono dentro del círculo */
-}
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-.whatsapp-btn {
-  animation: pulse 2s infinite;
-}
-
-/* ESTILOS RESPONSIVOS */
 @media (max-width: 768px) {
-  .features {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .feature {
-    padding: 1.5rem;
-  }
-
-  .feature-icon {
-    width: 60px;
-    height: 60px;
-  }
-
-  .feature-icon i {
-    font-size: 2rem;
-  }
-
-  /* Menú hamburguesa (solo CSS para mostrar/ocultar) */
   .menu-toggle {
-    display: none;
-    flex-direction: column;
-    height: 20px;
-    justify-content: space-between;
-    cursor: pointer;
-  }
-
-  .menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color);
-    transition: all 0.3s ease;
-  }
-
-  .nav-links {
     display: flex;
-    align-items: center;
   }
-
-  .nav-links {
-    display: none;
+  nav {
     flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    padding: 1rem;
-  }
-
-  .nav-links a {
-    margin: 0.5rem 0;
-    display: block;
-    text-align: center;
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
-
-  /* Estilos para cuando el menú está activo (necesitaría JS para la clase "active") */
-  .nav-links.active {
-    display: flex;
-  }
-
-  /* Rotar las líneas del menú hamburguesa cuando está activo (necesitaría JS) */
-  .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-
-  nav {
+    right: 0;
+    background-color: var(--background-color);
     flex-direction: column;
-    padding: 2rem 1rem;
+    padding: 1rem 2rem;
+    display: none;
   }
-
-  .services {
-    margin-bottom: 1rem;
+  .nav-links.open {
+    display: flex;
   }
-
-  nav strong {
-    align-items: flex-start;
+  .services-table {
+    display: block;
+    overflow-x: auto;
   }
-}
-
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
+  .services-table td {
+    display: inline-block;
+    width: 80%;
+    min-width: 250px;
   }
 }

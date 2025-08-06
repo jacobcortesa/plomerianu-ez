@@ -14,28 +14,22 @@
     <link rel="stylesheet" href="mobile-styles.css" />
   </head>
   <body>
-    <!-- Encabezado con logo, eslogan y menú responsive -->
+    <!-- Encabezado -->
     <header>
       <nav>
         <div class="nav-header">
-          <!-- Botón hamburguesa (izquierda) -->
           <button class="menu-toggle" aria-label="Menú móvil">
             <span></span>
             <span></span>
             <span></span>
           </button>
-
-          <!-- Logo (centro) -->
           <div class="brand-slogan">
             <div class="brand">Señor Jhon</div>
           </div>
-
-          <!-- Logo adicional (derecha) - Solo visible en móvil -->
           <div class="mobile-logo">
-            <img src="img/logo-mobile.png" alt="Logo" />
+            <img src="img/index/jhon (1).png" alt="Logo" />
           </div>
         </div>
-
         <div class="nav-links">
           <a href="index.html">Inicio</a>
           <a href="servicios.html">Servicios</a>
@@ -44,36 +38,44 @@
       </nav>
     </header>
 
-    <section class="services" id="servicios">
-      <div class="service">
-        <img src="img/index/jhon (1).png" alt="Fontanería" />
-        <h3>Fontanería</h3>
-        <p>
-          Servicios completos de instalación y reparación en cocinas y baños.
-        </p>
-      </div>
-
-      <div class="service">
-        <img src="img/index/jhon (1).png" alt="Grifos y Cisternas" />
-        <h3>Grifos y Cisternas</h3>
-        <p>
-          Reparación y sustitución de grifería y sanitarios para hogar o
-          negocio.
-        </p>
-      </div>
-
-      <div class="service">
-        <img src="img/index/jhon (1).png" alt="Calefacción" />
-        <h3>Calefacción</h3>
-        <p>
-          Instalación y mantenimiento de radiadores y sistemas de calefacción.
-        </p>
-      </div>
+    <!-- Sección de Servicios como Tabla -->
+    <section class="services-table-wrapper">
+      <h2>Servicios</h2>
+      <table class="services-table">
+        <tbody>
+          <tr>
+            <td>
+              <img src="img/index/jhon (1).png" alt="Fontanería" />
+              <h3>Fontanería</h3>
+              <p>
+                Servicios completos de instalación y reparación en cocinas y
+                baños.
+              </p>
+            </td>
+            <td>
+              <img src="img/index/jhon (1).png" alt="Grifos y Cisternas" />
+              <h3>Grifos y Cisternas</h3>
+              <p>
+                Reparación y sustitución de grifería y sanitarios para hogar o
+                negocio.
+              </p>
+            </td>
+            <td>
+              <img src="img/index/jhon (1).png" alt="Calefacción" />
+              <h3>Calefacción</h3>
+              <p>
+                Instalación y mantenimiento de radiadores y sistemas de
+                calefacción.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
+    <!-- Detalle de Características -->
     <section class="info">
       <h2>Servicios</h2>
-
       <div class="features">
         <div class="feature">
           <div class="feature-icon">
@@ -82,31 +84,21 @@
           <h3>Reparaciones Expertas</h3>
           <p>Soluciones profesionales para todo tipo de grifos y tuberías</p>
         </div>
-
         <div class="feature">
-          <div class="feature-icon">
-            <i class="fas fa-shower fa-fade"></i>
-          </div>
+          <div class="feature-icon"><i class="fas fa-shower fa-fade"></i></div>
           <h3>Baños y Sanitarios</h3>
           <p>Instalación y mantenimiento de sanitarios de alta calidad</p>
         </div>
-
         <div class="feature">
-          <div class="feature-icon">
-            <i class="fas fa-hammer fa-beat"></i>
-          </div>
+          <div class="feature-icon"><i class="fas fa-hammer fa-beat"></i></div>
           <h3>Reformas Completas</h3>
           <p>Transformamos tu baño con las últimas tendencias</p>
         </div>
-
         <div class="feature">
-          <div class="feature-icon">
-            <i class="fas fa-truck fa-flip"></i>
-          </div>
+          <div class="feature-icon"><i class="fas fa-truck fa-flip"></i></div>
           <h3>Servicio a Domicilio</h3>
           <p>Atención rápida y profesional en tu hogar</p>
         </div>
-
         <div class="feature">
           <div class="feature-icon">
             <i class="fas fa-hand-holding-dollar fa-bounce"></i>
@@ -114,24 +106,22 @@
           <h3>Precios Justos</h3>
           <p>Presupuestos transparentes sin sorpresas</p>
         </div>
-
         <div class="feature">
-          <div class="feature-icon">
-            <i class="fas fa-award fa-spin"></i>
-          </div>
+          <div class="feature-icon"><i class="fas fa-award fa-spin"></i></div>
           <h3>Garantía Total</h3>
           <p>Satisfacción garantizada en todos nuestros servicios</p>
         </div>
       </div>
     </section>
 
+    <!-- Footer y WhatsApp -->
     <footer id="contacto">
       <p>Contáctanos: 916 73 39 64 | 617 581 180</p>
       <p>Email: jhonplomero@example.com</p>
       <p>Valledupar - Cesar</p>
     </footer>
 
-    <a href="https:/me/573123456789" class="whatsapp-btn" target="_blank">
+    <a href="https://wa.me/573123456789" class="whatsapp-btn" target="_blank">
       <i class="fab fa-whatsapp"></i>
     </a>
 
