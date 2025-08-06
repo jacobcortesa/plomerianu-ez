@@ -1,0 +1,363 @@
+/* ESTILOS GLOBALES Y RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #f4f4f4;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", sans-serif;
+  color: #0056a3;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* PALETA DE COLORES */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --accent-color: #28a745;
+  --background-color: #f8f9fa;
+  --text-color: #343a40;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ESTILOS DEL ENCABEZADO (HEADER) Y NAVEGACIÓN (NAV) */
+header {
+  background: #fff;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav strong {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+nav div a {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+nav div a:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/* ESTILOS DEL PIE DE PÁGINA (FOOTER) */
+footer {
+  background-color: #003b6f;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+/* ESTILOS DEL BOTÓN FLOTANTE DE WHATSAPP */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #25d366;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 10px var(--shadow-color);
+}
+
+/* ESTILOS DE LA PÁGINA DE COTIZACIÓN (COTIZACION.HTML) */
+.cotizacion-container {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 3rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.cotizacion-container h2 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 2.5rem;
+}
+
+.cotizacion-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#servicios-lista {
+  margin-bottom: 2rem;
+}
+
+.servicio-item {
+  background: #f9f9f9;
+  padding: 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.servicio-item label {
+  margin-left: 0.75rem;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.cotizacion-resumen {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.cotizacion-resumen h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+#servicios-seleccionados {
+  list-style: none;
+  padding: 0;
+}
+
+#servicios-seleccionados li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+#servicios-seleccionados li:last-child {
+  border-bottom: none;
+}
+
+.total {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+  text-align: right;
+}
+
+.total span {
+  color: var(--accent-color);
+}
+
+.cotizacion-botones {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.cotizacion-botones a {
+  display: inline-block;
+  margin: 0 1rem;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cotizacion-botones .whatsapp-btn {
+  background-color: #25d366;
+  color: #fff;
+}
+
+.cotizacion-botones .whatsapp-btn:hover {
+  background-color: #128c7e;
+}
+
+.cotizacion-botones .call-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.cotizacion-botones .call-btn:hover {
+  background-color: #0056b3;
+}
+
+/* ESTILOS RESPONSIVOS */
+@media (max-width: 768px) {
+  .cotizacion-container {
+    padding: 1rem;
+  }
+
+  .cotizacion-form {
+    width: 100%;
+  }
+
+  .cotizacion-botones a {
+    display: block;
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  /* Menú hamburguesa (solo CSS para mostrar/ocultar) */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    padding: 1rem;
+  }
+
+  .nav-links a {
+    margin: 0.5rem 0;
+    display: block;
+    text-align: center;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Estilos para cuando el menú está activo (necesitaría JS para la clase "active") */
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* Rotar las líneas del menú hamburguesa cuando está activo (necesitaría JS) */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  nav {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+
+  .services {
+    margin-bottom: 1rem;
+  }
+
+  nav strong {
+    align-items: flex-start;
+  }
+
+  .cotizacion-botones a {
+    display: block;
+    margin: 1rem 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}

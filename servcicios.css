@@ -1,0 +1,384 @@
+/* ESTILOS GLOBALES Y RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #f4f4f4;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", sans-serif;
+  color: #0056a3;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* PALETA DE COLORES */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --accent-color: #28a745;
+  --background-color: #f8f9fa;
+  --text-color: #343a40;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ESTILOS DEL ENCABEZADO (HEADER) Y NAVEGACIÓN (NAV) */
+header {
+  background: #fff;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav strong {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+nav div a {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+nav div a:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/* ESTILOS DEL PIE DE PÁGINA (FOOTER) */
+footer {
+  background-color: #003b6f;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+/* ESTILOS DEL BOTÓN FLOTANTE DE WHATSAPP */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #25d366;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 10px var(--shadow-color);
+}
+
+/* ESTILOS DE LA PÁGINA DE SERVICIOS (SERVICIOS.HTML) */
+.services-grid-container {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  text-align: center;
+  color: #003b6f;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.service-item {
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.service-item:hover .service-image img {
+  transform: scale(1.05);
+}
+
+.service-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #003b6f;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.service-content {
+  padding: 1.5rem;
+}
+
+.service-content h3 {
+  color: #003b6f;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-features {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.service-features span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.service-features i {
+  color: #003b6f;
+}
+
+.service-description {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.service-price-container {
+  margin-bottom: 1.5rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  color: #003b6f;
+  font-weight: 600;
+}
+
+.price span {
+  font-size: 1.4rem;
+  color: #28a745;
+}
+
+.price-note {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+.whatsapp-btn-service {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: #25d366;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.whatsapp-btn-service:hover {
+  background: #128c7e;
+}
+
+.whatsapp-btn-service i {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-image img {
+    height: 200px;
+  }
+
+  /* Menú hamburguesa (solo CSS para mostrar/ocultar) */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    padding: 1rem;
+  }
+
+  .nav-links a {
+    margin: 0.5rem 0;
+    display: block;
+    text-align: center;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Estilos para cuando el menú está activo (necesitaría JS para la clase "active") */
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* Rotar las líneas del menú hamburguesa cuando está activo (necesitaría JS) */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  nav {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+
+  .cotizacion-container {
+    padding: 1rem;
+  }
+
+  .cotizacion-form {
+    width: 100%;
+  }
+
+  .feature {
+    flex-direction: column;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  nav strong {
+    align-items: flex-start;
+  }
+
+  .cotizacion-botones a {
+    display: block;
+    margin: 1rem 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
