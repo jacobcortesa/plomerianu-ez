@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //aqui es ml mas nuevo//
 
-// Versión mejorada con detección de clics y errores
+// Versión mejorada y corregida del menú móvil
 document.addEventListener("DOMContentLoaded", function () {
   // Elementos del menú
   const menuToggle = document.querySelector(".menu-toggle");
@@ -175,10 +175,12 @@ document.addEventListener("DOMContentLoaded", function () {
     menuToggle.classList.toggle("active");
     navLinks.classList.toggle("active");
 
-    // Bloquear scroll cuando el menú está abierto
-    document.body.style.overflow = navLinks.classList.contains("active")
-      ? "hidden"
-      : "";
+    // Bloquear scroll cuando el menú está abierto solo en móvil
+    if (window.innerWidth <= 768) {
+      document.body.style.overflow = navLinks.classList.contains("active")
+        ? "hidden"
+        : "";
+    }
   }
 
   // Evento de clic en el botón hamburguesa
@@ -187,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleMenu();
   });
 
-  // Cerrar menú al hacer clic en un enlace
+  // Cerrar menú al hacer clic en un enlace (solo en móvil)
   document.querySelectorAll(".nav-links a").forEach((link) => {
     link.addEventListener("click", function () {
       if (window.innerWidth <= 768) {
@@ -196,9 +198,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Cerrar menú al hacer clic fuera
+  // Cerrar menú al hacer clic fuera (solo en móvil)
   document.addEventListener("click", function (e) {
     if (
+      window.innerWidth <= 768 &&
       navLinks.classList.contains("active") &&
       !e.target.closest(".nav-links") &&
       !e.target.closest(".menu-toggle")
@@ -215,10 +218,49 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Redimensionamiento de pantalla
+  // Redimensionamiento de pantalla - asegurar que el menú se cierre
   window.addEventListener("resize", function () {
     if (window.innerWidth > 768 && navLinks.classList.contains("active")) {
       toggleMenu();
     }
   });
 });
+
+// Corrección para el botón de WhatsApp (en la sección de cotización)
+function generarMensajeWhatsApp() {
+  const nombre = nombreInput.value || "Cliente";
+  const fecha = fechaInput.value || new Date().toLocaleDateString();
+  const numeroCotizacion = numeroCotizacionInput.value || "N/A";
+
+  let mensaje = `¡Hola Jacob!\n\nSoy ${nombre} y me interesa la siguiente cotización:\n`;
+  mensaje += `Fecha: ${fecha}\n`;
+  mensaje += `Número de Cotización: ${numeroCotizacion}\n\n`;
+
+  if (serviciosSeleccionadosArray.length === 0) {
+    mensaje += "No se han seleccionado servicios.\n";
+  } else {
+    serviciosSeleccionadosArray.forEach((servicio) => {
+      mensaje += `- ${servicio.nombre} - ${servicio.precio.toLocaleString(
+        "es-CO",
+        {
+          style: "currency",
+          currency: "COP",
+          minimumFractionDigits: 0,
+        }
+      )}\n`;
+    });
+    mensaje += `\nTotal: ${total.toLocaleString("es-CO", {
+      style: "currency",
+      currency: "COP",
+      minimumFractionDigits: 0,
+    })}\n`;
+  }
+
+  mensaje += `\n¡Espero su respuesta!`;
+
+  // URL corregida para WhatsApp
+  const url = `https://api.whatsapp.com/send?phone=573123456789&text=${encodeURIComponent(
+    mensaje
+  )}`;
+  window.open(url, "_blank");
+}
