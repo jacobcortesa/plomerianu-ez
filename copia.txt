@@ -1,0 +1,28 @@
+ <!-- Nueva sección hero con imagen de fondo -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>SEÑOR JHON</h1>
+        <div class="hero-text">
+          <h2>SERVICIOS PROFESIONALES DE PLOMERÍA</h2>
+          <p class="hero-description">
+            Expertos en soluciones integrales de plomería para hogares y
+            empresas en Valledupar
+          </p>
+          <ul class="hero-features">
+            <li>
+              <i class="fas fa-check-circle"></i> Servicio de emergencia 24/7
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Más de 10 años de experiencia
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Garantía en todos nuestros
+              trabajos
+            </li>
+          </ul>
+          <a href="https:/ class="hero-cta">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </section>
