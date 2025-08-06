@@ -130,3 +130,7 @@
     margin-top: 70px;
   }
 }
+.nav-links {
+  /* ... (tus estilos actuales) ... */
+  overflow-y: auto; /* Permite scroll si el menú es muy largo */
+}
