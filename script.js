@@ -155,3 +155,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Mostrar los servicios al cargar la página
   mostrarServicios();
 });
+
+// Activar menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if(menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+  }
+});
