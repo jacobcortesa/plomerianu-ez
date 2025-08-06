@@ -1,71 +1,77 @@
-/* =============================================
-   MENÚ HORIZONTAL FLOTANTE PARA MÓVIL
-   - Botones alineados a la derecha
-   - Desaparece al hacer scroll
-   - Efectos de transición suaves
-   ============================================= */
-
+/* VERSIÓN MÓVIL */
 @media (max-width: 768px) {
-  /* Contenedor principal del menú */
-  header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  /* Menú visible por defecto */
-  header.visible {
-    transform: translateY(0);
-  }
-  
-  /* Menú oculto al hacer scroll */
-  header.hidden {
-    transform: translateY(-100%);
-  }
+    /* HEADER Y NAVEGACIÓN */
+    nav {
+        padding: 1rem;
+        flex-wrap: wrap;
+    }
 
-  /* Barra de navegación */
-  nav {
-    display: flex;
-    justify-content: flex-end; /* Alineación a la derecha */
-    align-items: center;
-    padding: 10px 15px;
-    background: #fff;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-  }
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+    }
 
-  /* Contenedor de enlaces horizontal */
-  .nav-links {
-    display: flex;
-    gap: 8px;
-  }
+    .menu-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background: #0056a3;
+        transition: all 0.3s;
+    }
 
-  /* Estilo de cada botón */
-  .nav-links a {
-    padding: 8px 12px;
-    background: #f8f9fa;
-    color: #0056a3 !important;
-    border: 2px solid #0056a3;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 14px;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-  }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        padding: 1rem 0;
+        margin-top: 1rem;
+        border-top: 1px solid #eee;
+    }
 
-  /* Efectos interactivos */
-  .nav-links a:hover {
-    background: #0056a3;
-    color: white !important;
-    transform: translateY(-2px);
-  }
+    .nav-links.active {
+        display: flex;
+    }
 
-  /* Botón activo */
-  .nav-links a.active {
-    background: #0056a3;
-    color: white !important;
-    box-shadow: 0 4px 8px rgba(0,86,163,0.3);
-  }
+    .nav-links a {
+        padding: 0.8rem 1rem;
+        margin: 0.2rem 0;
+        text-align: center;
+    }
+
+    /* ANIMACIÓN HAMBURGUESA */
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* SERVICIOS */
+    .services {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    /* INFO */
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    /* WHATSAPP */
+    .whatsapp-btn {
+        bottom: 1rem;
+        right: 1rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
 }
