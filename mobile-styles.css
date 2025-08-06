@@ -1,362 +1,132 @@
-/* Estilos generales */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* Estilos de la barra de navegación */
-.navbar {
-    background-color: #2c3e50;
-    color: white;
-    padding: 1rem 2rem;
-    position: relative;
+@media (max-width: 768px) {
+  /* HEADER Y NAVEGACIÓN */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+  }
 
-.navbar-container {
+  nav {
+    padding: 0.8rem 1rem;
+  }
+
+  /* CONTENEDOR PRINCIPAL DEL HEADER */
+  .nav-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+    width: 100%;
+    position: relative;
+  }
 
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ecf0f1;
-}
-
-/* Estilos del botón hamburguesa */
-.hamburger-btn {
-    display: none;
+  /* BOTÓN HAMBURGUESA (IZQUIERDA) */
+  .menu-toggle {
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 21px;
-    background: transparent;
+    background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 100;
-}
+    z-index: 1001;
+    order: 1; /* Posición 1: izquierda */
+  }
 
-.hamburger-line {
-    width: 100%;
+  .menu-toggle span {
+    display: block;
     height: 3px;
-    background: #ecf0f1;
-    transition: all 0.3s ease;
-    transform-origin: left center;
-}
-
-/* Estilos de los enlaces de navegación */
-.navbar-links {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.navbar-links a {
-    color: #ecf0f1;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    position: relative;
-    padding: 0.5rem 0;
-}
-
-.navbar-links a:hover {
-    color: #3498db;
-}
-
-.navbar-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #3498db;
-    transition: width 0.3s ease;
-}
-
-.navbar-links a:hover::after {
     width: 100%;
-}
+    background: #0056a3;
+    transition: all 0.3s ease;
+  }
 
-/* Estilos para móviles */
-@media (max-width: 768px) {
-    .hamburger-btn {
-        display: flex;
-    }
-    
-    .navbar-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        max-width: 300px;
-        height: 100vh;
-        background: #2c3e50;
-        flex-direction: column;
-        padding: 5rem 2rem;
-        gap: 1.5rem;
-        transition: right 0.4s ease;
-        z-index: 99;
-    }
-    
-    .navbar-links.active {
-        right: 0;
-    }
-    
-    /* Animación del botón hamburguesa a X */
-    .hamburger-btn.active .hamburger-line:nth-child(1) {
-        transform: rotate(45deg) translate(5px, -5px);
-    }
-    
-    .hamburger-btn.active .hamburger-line:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .hamburger-btn.active .hamburger-line:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, 5px);
-    }
-    
-    /* Overlay para el fondo */
-    .navbar-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 98;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.4s ease;
-    }
-    
-    .navbar-overlay.active {
-        opacity: 1;
-        visibility: visible;
-    }
-}
-/* ============= ESTILOS GENERALES MEJORADOS ============= */
-:root {
-  --primary-color: #2e86de;
-  --secondary-color: #ff6b6b;
-  --dark-color: #333;
-  --light-color: #fff;
-  --overlay-color: rgba(0, 0, 0, 0.7);
-  --transition-speed: 0.4s;
-}
+  /* LOGO PRINCIPAL (CENTRO) */
+  .brand-slogan {
+    order: 2; /* Posición 2: centro */
+    flex-grow: 1;
+    text-align: center;
+    padding: 0 10px;
+  }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  .brand {
+    font-size: 1.2rem;
+    color: #0056a3;
+    font-weight: bold;
+    white-space: nowrap;
+  }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* ============= MENÚ HAMBURGUESA MEJORADO ============= */
-.nav-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: var(--light-color);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 1002;
-}
-
-.brand {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-.mobile-logo img {
-  height: 40px;
-}
-
-/* Botón Hamburguesa Mejorado */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 1003;
-  position: relative;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 30px;
-  height: 3px;
-  background: var(--dark-color);
-  margin: 6px 0;
-  transition: all var(--transition-speed) ease;
-  transform-origin: center;
-}
-
-.menu-toggle.active span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
-  background: var(--primary-color);
-}
-
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-
-.menu-toggle.active span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
-  background: var(--primary-color);
-}
-
-/* Navegación Mejorada */
-.nav-links {
-  display: flex;
-  transition: all var(--transition-speed) ease;
-}
-
-.nav-links a {
-  color: var(--dark-color);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
-  font-weight: 500;
-  transition: color 0.3s ease;
-  position: relative;
-}
-
-.nav-links a:hover {
-  color: var(--primary-color);
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background: var(--primary-color);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-  width: 70%;
-}
-
-/* Overlay Mejorado */
-.nav-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--overlay-color);
-  z-index: 998;
-  opacity: 0;
-  visibility: hidden;
-  transition: all var(--transition-speed) ease;
-  backdrop-filter: blur(3px);
-}
-
-.nav-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* ============= ESTILOS RESPONSIVE MEJORADOS ============= */
-@media (max-width: 768px) {
-  .menu-toggle {
+  /* LOGO ADICIONAL (DERECHA) */
+  .mobile-logo {
+    order: 3; /* Posición 3: derecha */
     display: flex;
-    flex-direction: column;
     align-items: center;
   }
-  
+
+  .mobile-logo img {
+    height: 40px;
+    width: auto;
+    max-width: 80px; /* Ajusta según tu logo */
+  }
+
+  /* MENÚ DESPLEGABLE */
   .nav-links {
     position: fixed;
-    top: 0;
+    top: 70px;
     left: -100%;
-    width: 85%;
-    max-width: 320px;
-    height: 100vh;
-    background: var(--light-color);
+    width: 280px; /* Ancho más estrecho */
+    height: calc(100vh - 70px);
+    background: white;
+    padding: 1rem 0;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 999;
+    display: flex;
     flex-direction: column;
-    padding: 6rem 2rem 2rem;
-    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
-    z-index: 1001;
+    align-items: flex-start; /* Alineación izquierda */
   }
-  
+
   .nav-links.active {
     left: 0;
   }
-  
+
   .nav-links a {
-    padding: 1rem;
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
-    border-bottom: 1px solid #eee;
+    display: block;
+    width: 90%;
+    padding: 12px 20px;
+    margin: 5px 0;
+    color: #0056a3 !important;
+    text-align: left;
+    font-weight: 600;
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
   }
-  
-  .nav-links a::after {
-    display: none;
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: #f0f7ff !important;
+    border-left: 4px solid #0056a3;
+    color: #003366 !important;
   }
-  
-  body.menu-open {
-    overflow: hidden;
+
+  /* ANIMACIÓN HAMBURGUESA */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
   }
-  
-  .brand {
-    font-size: 1.5rem;
-    margin-left: 1rem;
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* COMPENSACIÓN PARA EL HEADER FIJO */
+  main {
+    margin-top: 70px;
   }
 }
-
-/* ============= MEJORAS VISUALES ADICIONALES ============= */
-/* Efecto de elevación cuando el menú está activo */
-.nav-links.active {
-  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.2);
-}
-
-/* Transición más suave para los enlaces */
-.nav-links a {
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-/* Efecto de "presionado" en el botón hamburguesa */
-.menu-toggle:active span {
-  transform: scale(0.9);
-}
-
-/* Animación de carga para el menú */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-.nav-links.active a {
-  animation: fadeIn 0.3s ease forwards;
-}
-
-.nav-links.active a:nth-child(1) { animation-delay: 0.1s; }
-.nav-links.active a:nth-child(2) { animation-delay: 0.2s; }
-.nav-links.active a:nth-child(3) { animation-delay: 0.3s; }
