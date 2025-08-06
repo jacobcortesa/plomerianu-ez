@@ -1,233 +1,212 @@
-/* Estilos generales del menú */
+/* ============= ESTILOS GENERALES MEJORADOS ============= */
+:root {
+  --primary-color: #2e86de;
+  --secondary-color: #ff6b6b;
+  --dark-color: #333;
+  --light-color: #fff;
+  --overlay-color: rgba(0, 0, 0, 0.7);
+  --transition-speed: 0.4s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ============= MENÚ HAMBURGUESA MEJORADO ============= */
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--light-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1002;
+}
+
+.brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.mobile-logo img {
+  height: 40px;
+}
+
+/* Botón Hamburguesa Mejorado */
 .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001;
-    position: relative;
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1003;
+  position: relative;
 }
 
 .menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: #333;
-    margin: 5px 0;
-    transition: all 0.3s ease;
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: var(--dark-color);
+  margin: 6px 0;
+  transition: all var(--transition-speed) ease;
+  transform-origin: center;
 }
 
 .menu-toggle.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+  transform: translateY(9px) rotate(45deg);
+  background: var(--primary-color);
 }
 
 .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
+  transform: scaleX(0);
 }
 
 .menu-toggle.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-9px) rotate(-45deg);
+  background: var(--primary-color);
 }
 
+/* Navegación Mejorada */
 .nav-links {
-    display: flex;
-    transition: all 0.3s ease;
+  display: flex;
+  transition: all var(--transition-speed) ease;
 }
 
+.nav-links a {
+  color: var(--dark-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 70%;
+}
+
+/* Overlay Mejorado */
 .nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-color);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-speed) ease;
+  backdrop-filter: blur(3px);
 }
 
 .nav-overlay.active {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
-.nav-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    position: relative;
-    z-index: 1002;
-}
-
-/* Estilos responsive */
+/* ============= ESTILOS RESPONSIVE MEJORADOS ============= */
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-    
-    .nav-links {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
-        background: white;
-        flex-direction: column;
-        padding: 80px 20px 20px;
-        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-        z-index: 1000;
-    }
-    
-    .nav-links.active {
-        left: 0;
-    }
-    
-    body.menu-open {
-        overflow: hidden;
-    }
-}
-
-/* Estilos específicos para la página de servicios */
-.services-grid-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.section-subtitle {
-    text-align: center;
-    color: #666;
-    margin-bottom: 30px;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.service-item {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-}
-
-.service-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.service-image {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
-}
-
-.service-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.service-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ff6b6b;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-}
-
-.service-content {
-    padding: 20px;
-}
-
-.service-features {
+  .menu-toggle {
     display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.service-features i {
-    margin-right: 5px;
-}
-
-.service-description {
-    color: #666;
-    margin: 15px 0;
-}
-
-.service-price-container {
-    margin: 20px 0;
-}
-
-.price {
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.price span {
-    color: #2e86de;
-}
-
-.price-note {
-    font-size: 0.8rem;
-    color: #888;
-    margin-top: 5px;
-}
-
-.whatsapp-btn-service {
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: #25D366;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 85%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--light-color);
+    flex-direction: column;
+    padding: 6rem 2rem 2rem;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+  }
+  
+  .nav-links.active {
+    left: 0;
+  }
+  
+  .nav-links a {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .nav-links a::after {
+    display: none;
+  }
+  
+  body.menu-open {
+    overflow: hidden;
+  }
+  
+  .brand {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+  }
 }
 
-.whatsapp-btn-service:hover {
-    background: #128C7E;
+/* ============= MEJORAS VISUALES ADICIONALES ============= */
+/* Efecto de elevación cuando el menú está activo */
+.nav-links.active {
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.2);
 }
 
-.whatsapp-btn-service i {
-    margin-right: 10px;
-    font-size: 1.2rem;
+/* Transición más suave para los enlaces */
+.nav-links a {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Estilos del footer */
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
+/* Efecto de "presionado" en el botón hamburguesa */
+.menu-toggle:active span {
+  transform: scale(0.9);
 }
 
-footer a {
-    color: #4dabf7;
-    text-decoration: none;
+/* Animación de carga para el menú */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
 }
+
+.nav-links.active a {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.nav-links.active a:nth-child(1) { animation-delay: 0.1s; }
+.nav-links.active a:nth-child(2) { animation-delay: 0.2s; }
+.nav-links.active a:nth-child(3) { animation-delay: 0.3s; }
