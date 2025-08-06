@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Datos de los servicios
+  // --- Lógica de la Cotización ---
   const serviciosData = [
     {
       id: 1,
@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  // Elementos de la cotización
   const serviciosLista = document.getElementById("servicios-lista");
   const serviciosSeleccionados = document.getElementById(
     "servicios-seleccionados"
@@ -59,74 +58,79 @@ document.addEventListener("DOMContentLoaded", function () {
   let serviciosSeleccionadosArray = [];
   let total = 0;
 
-  // Función para mostrar los servicios en la lista
   function mostrarServicios() {
-    serviciosData.forEach((servicio) => {
-      const servicioItem = document.createElement("div");
-      servicioItem.classList.add("servicio-item");
+    if (serviciosLista) {
+      serviciosData.forEach((servicio) => {
+        const servicioItem = document.createElement("div");
+        servicioItem.classList.add("servicio-item");
 
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.id = `servicio-${servicio.id}`;
-      checkbox.value = servicio.id;
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = `servicio-${servicio.id}`;
+        checkbox.value = servicio.id;
 
-      const label = document.createElement("label");
-      label.htmlFor = `servicio-${servicio.id}`;
-      label.textContent = `${
-        servicio.nombre
-      } - ${servicio.precio.toLocaleString("es-CO", {
-        style: "currency",
-        currency: "COP",
-        minimumFractionDigits: 0,
-      })}`;
-
-      servicioItem.appendChild(checkbox);
-      servicioItem.appendChild(label);
-      serviciosLista.appendChild(servicioItem);
-
-      checkbox.addEventListener("change", function () {
-        if (this.checked) {
-          serviciosSeleccionadosArray.push(servicio);
-          total += servicio.precio;
-        } else {
-          serviciosSeleccionadosArray = serviciosSeleccionadosArray.filter(
-            (s) => s.id !== servicio.id
-          );
-          total -= servicio.precio;
-        }
-        actualizarResumen();
-      });
-    });
-  }
-
-  // Función para actualizar el resumen de la cotización
-  function actualizarResumen() {
-    serviciosSeleccionados.innerHTML = "";
-    serviciosSeleccionadosArray.forEach((servicio) => {
-      const li = document.createElement("li");
-      li.textContent = `${servicio.nombre} - ${servicio.precio.toLocaleString(
-        "es-CO",
-        {
+        const label = document.createElement("label");
+        label.htmlFor = `servicio-${servicio.id}`;
+        label.textContent = `${
+          servicio.nombre
+        } - ${servicio.precio.toLocaleString("es-CO", {
           style: "currency",
           currency: "COP",
           minimumFractionDigits: 0,
-        }
-      )}`;
-      serviciosSeleccionados.appendChild(li);
-    });
+        })}`;
 
-    totalPrecio.textContent = total.toLocaleString("es-CO", {
-      style: "currency",
-      currency: "COP",
-      minimumFractionDigits: 0,
-    });
+        servicioItem.appendChild(checkbox);
+        servicioItem.appendChild(label);
+        serviciosLista.appendChild(servicioItem);
+
+        checkbox.addEventListener("change", function () {
+          if (this.checked) {
+            serviciosSeleccionadosArray.push(servicio);
+            total += servicio.precio;
+          } else {
+            serviciosSeleccionadosArray = serviciosSeleccionadosArray.filter(
+              (s) => s.id !== servicio.id
+            );
+            total -= servicio.precio;
+          }
+          actualizarResumen();
+        });
+      });
+    }
   }
 
-  // Función para generar el mensaje de WhatsApp
+  function actualizarResumen() {
+    if (serviciosSeleccionados && totalPrecio) {
+      serviciosSeleccionados.innerHTML = "";
+      serviciosSeleccionadosArray.forEach((servicio) => {
+        const li = document.createElement("li");
+        li.textContent = `${servicio.nombre} - ${servicio.precio.toLocaleString(
+          "es-CO",
+          {
+            style: "currency",
+            currency: "COP",
+            minimumFractionDigits: 0,
+          }
+        )}`;
+        serviciosSeleccionados.appendChild(li);
+      });
+
+      totalPrecio.textContent = total.toLocaleString("es-CO", {
+        style: "currency",
+        currency: "COP",
+        minimumFractionDigits: 0,
+      });
+    }
+  }
+
   function generarMensajeWhatsApp() {
-    const nombre = nombreInput.value || "Cliente";
-    const fecha = fechaInput.value || new Date().toLocaleDateString();
-    const numeroCotizacion = numeroCotizacionInput.value || "N/A";
+    const nombre = nombreInput ? nombreInput.value : "Cliente";
+    const fecha = fechaInput
+      ? fechaInput.value
+      : new Date().toLocaleDateString();
+    const numeroCotizacion = numeroCotizacionInput
+      ? numeroCotizacionInput.value
+      : "N/A";
 
     let mensaje = `¡Hola Jacob!\n\nSoy ${nombre} y me interesa la siguiente cotización:\n`;
     mensaje += `Fecha: ${fecha}\n`;
@@ -136,7 +140,6 @@ document.addEventListener("DOMContentLoaded", function () {
       mensaje += "No se han seleccionado servicios.\n";
     } else {
       serviciosSeleccionadosArray.forEach((servicio) => {
-        // Corrección: El precio se muestra en COP, no en EUR
         mensaje += `- ${servicio.nombre} - ${servicio.precio.toLocaleString(
           "es-CO",
           {
@@ -146,7 +149,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         )}\n`;
       });
-      // Corrección: El total se muestra en COP, no en EUR
       mensaje += `\nTotal: ${total.toLocaleString("es-CO", {
         style: "currency",
         currency: "COP",
@@ -162,7 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.open(url, "_blank");
   }
 
-  // Evento para el botón de WhatsApp
   if (whatsappCotizacionBtn) {
     whatsappCotizacionBtn.addEventListener("click", function (e) {
       e.preventDefault();
@@ -170,15 +171,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Mostrar los servicios al cargar la página
   mostrarServicios();
 
-  // --- Código del menú de navegación ---
+  // --- Lógica del Botón de Hamburguesa ---
   const menuToggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
   const body = document.body;
 
-  // Función para alternar el menú
   function toggleMenu() {
     if (menuToggle && navLinks) {
       menuToggle.classList.toggle("active");
@@ -192,7 +191,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Evento de clic en el botón hamburguesa
   if (menuToggle) {
     menuToggle.addEventListener("click", function (e) {
       e.stopPropagation();
@@ -200,36 +198,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Cerrar menú al hacer clic en un enlace (solo en móvil)
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    link.addEventListener("click", function () {
-      if (window.innerWidth <= 768) {
+  if (navLinks) {
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", function () {
+        if (window.innerWidth <= 768) {
+          toggleMenu();
+        }
+      });
+    });
+
+    document.addEventListener("click", function (e) {
+      if (
+        window.innerWidth <= 768 &&
+        navLinks.classList.contains("active") &&
+        !e.target.closest(".nav-links") &&
+        !e.target.closest(".menu-toggle")
+      ) {
         toggleMenu();
       }
     });
-  });
 
-  // Cerrar menú al hacer clic fuera (solo en móvil)
-  document.addEventListener("click", function (e) {
-    if (
-      window.innerWidth <= 768 &&
-      navLinks &&
-      navLinks.classList.contains("active") &&
-      !e.target.closest(".nav-links") &&
-      !e.target.closest(".menu-toggle")
-    ) {
-      toggleMenu();
-    }
-  });
-
-  // Redimensionamiento de pantalla
-  window.addEventListener("resize", function () {
-    if (
-      window.innerWidth > 768 &&
-      navLinks &&
-      navLinks.classList.contains("active")
-    ) {
-      toggleMenu();
-    }
-  });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 768 && navLinks.classList.contains("active")) {
+        toggleMenu();
+      }
+    });
+  }
 });
