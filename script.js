@@ -158,18 +158,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //aqui es ml mas nuevo//
-<nav>
-  <div class="menu-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  
-  <div class="nav-brand">Señor Jhon</div>
-  
-  <div class="nav-links">
-    <a href="index.html" class="active">Inicio</a> <!-- Añade class="active" a la página actual -->
-    <a href="servicios.html">Servicios</a>
-    <a href="cotizacion.html">Cotización</a>
-  </div>
-</nav>
+// Control del menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+    
+    // Cerrar menú al hacer clic en un enlace (solo en móvil)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function() {
+            if(window.innerWidth <= 768) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    });
+    
+    // Marcar página activa
+    const currentPage = location.pathname.split('/').pop();
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        if(link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
+    });
+});
