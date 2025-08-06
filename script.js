@@ -192,3 +192,71 @@ document.addEventListener("DOMContentLoaded", function() {
     // if (document.getElementById('galeria')) { ... }
     // if (document.getElementById('contacto-form')) { ... }
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    // ============= MENÚ HAMBURGUESA UNIVERSAL =============
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    
+    if (menuToggle && navLinks) {
+        const overlay = document.createElement('div');
+        overlay.className = 'nav-overlay';
+        document.body.appendChild(overlay);
+
+        function toggleMenu() {
+            menuToggle.classList.toggle("active");
+            navLinks.classList.toggle("active");
+            overlay.classList.toggle("active");
+            
+            if (navLinks.classList.contains("active")) {
+                document.body.classList.add("menu-open");
+            } else {
+                document.body.classList.remove("menu-open");
+            }
+        }
+
+        menuToggle.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        overlay.addEventListener("click", toggleMenu);
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    toggleMenu();
+                    setTimeout(() => {
+                        window.location.href = this.href;
+                    }, 300);
+                }
+            });
+        });
+
+        window.addEventListener("resize", function() {
+            if (window.innerWidth > 768 && navLinks.classList.contains("active")) {
+                toggleMenu();
+            }
+        });
+    }
+
+    // ============= ANIMACIONES PARA SERVICIOS =============
+    const serviceItems = document.querySelectorAll('.service-item');
+    
+    function checkServiceItems() {
+        serviceItems.forEach(item => {
+            const itemTop = item.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (itemTop < windowHeight * 0.8) {
+                item.classList.add('visible');
+            }
+        });
+    }
+    
+    window.addEventListener('load', checkServiceItems);
+    window.addEventListener('scroll', checkServiceItems);
+});
