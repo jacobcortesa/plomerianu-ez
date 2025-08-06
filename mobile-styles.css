@@ -1,155 +1,99 @@
-
 /* =============================================
-   MENÚ VERTICAL MEJORADO PARA MÓVIL
-   - Diseño vertical claro
+   MENÚ HORIZONTAL MEJORADO PARA MÓVIL
+   - Diseño horizontal compacto
    - Bordes redondeados
    - Colores profesionales
-   - Efectos al tocar
+   - Efectos al tocar con animaciones
    ============================================= */
 
 @media (max-width: 768px) {
   /* Contenedor principal del menú */
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px; /* Espacio entre botones */
-    width: 90%;
-    margin: 15px auto;
-    padding: 10px;
-  }
-
-  /* Estilo de cada botón */
-  .nav-links a {
-    display: block;
-    padding: 15px 20px;
-    text-align: center;
-    background: #ffffff;
-    color: #2c3e50 !important; /* Color de texto azul oscuro */
-    border: 2px solid #3498db; /* Borde azul */
-    border-radius: 8px; /* Esquinas redondeadas */
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-  }
-
-  /* Efecto al pasar el dedo */
-  .nav-links a:hover, 
-  .nav-links a:focus {
-    background: #3498db; /* Fondo azul al tocar */
-    color: white !important;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  }
-
-  /* Botón activo (para la página actual) */
-  .nav-links a.active {
-    background: #2980b9;
-    color: white !important;
-    border-color: #2980b9;
-  }
-
-  /* Animación del menú hamburguesa */
-  .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-    background: #e74c3c; /* Rojo cuando está activo */
-  }
-  .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-    background: #e74c3c; /* Rojo cuando está activo */
-  }
-}
-/* ======================
-   MENÚ MÓVIL DEFINITIVO
-   ====================== */
-@media (max-width: 768px) {
-  /* Contenedor principal del menú */
   nav {
-    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px 15px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: relative;
   }
 
   /* Logo/Marca */
   .nav-brand {
-    order: 2;
-    width: 100%;
-    text-align: center;
-    font-size: 1.5rem;
-    padding: 10px 0;
+    font-size: 1.3rem;
+    color: #0056a3;
+    font-weight: bold;
+    z-index: 100;
   }
 
-  /* Botón hamburguesa */
-  .menu-toggle {
-    display: flex;
-    order: 1;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-    z-index: 1000;
-  }
-
-  .menu-toggle span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: #0056a3;
-    transition: all 0.3s ease;
-  }
-
-  /* Estado activo del menú hamburguesa */
-  .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-  }
-
-  /* Contenedor de los enlaces */
+  /* Contenedor de enlaces - ahora horizontal */
   .nav-links {
-    order: 3;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-out;
-    background: white;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    margin-top: 0;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scrollbar-width: none; /* Para Firefox */
+    -ms-overflow-style: none; /* Para IE/Edge */
   }
 
-  /* Estado abierto del menú */
-  .nav-links.active {
-    max-height: 500px;
-    padding: 15px 0;
-    border-top: 1px solid #f0f0f0;
+  .nav-links::-webkit-scrollbar {
+    display: none; /* Para Chrome/Safari */
   }
 
-  /* Estilos de los enlaces */
+  /* Estilo de cada botón */
   .nav-links a {
-    width: 90%;
-    padding: 12px 15px;
-    margin: 5px 0;
-    text-align: center;
-    background: #f8f9fa;
-    border-radius: 6px;
+    flex: 0 0 auto;
+    padding: 10px 15px;
+    background: #ffffff;
     color: #0056a3 !important;
+    border: 2px solid #0056a3;
+    border-radius: 25px; /* Más redondeado */
     font-weight: 600;
-    border: 1px solid #e0e0e0;
-    transition: all 0.3s;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transform: scale(0.95);
   }
 
-  .nav-links a:hover {
-    background: #0056a3 !important;
+  /* Efecto al pasar el dedo */
+  .nav-links a:hover, 
+  .nav-links a:focus {
+    background: #0056a3;
     color: white !important;
-    transform: scale(1.02);
+    transform: scale(1);
+    box-shadow: 0 4px 8px rgba(0,86,163,0.2);
+  }
+
+  /* Botón activo */
+  .nav-links a.active {
+    background: #0056a3;
+    color: white !important;
+    transform: scale(1);
+    animation: pulse 2s infinite;
+  }
+
+  /* Animación de pulso para botón activo */
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(0, 86, 163, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(0, 86, 163, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 86, 163, 0);
+    }
+  }
+
+  /* Efecto de "rebote" al hacer clic */
+  .nav-links a:active {
+    transform: scale(0.9);
+    transition: transform 0.1s;
+  }
+
+  /* Ocultar hamburguesa ya que es horizontal */
+  .menu-toggle {
+    display: none !important;
   }
 }
