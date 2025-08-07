@@ -88,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     totalPrecio.textContent = `${total.toLocaleString("es-CO")} COP`;
 
-    // WhatsApp message
     let mensaje = `Hola, quiero cotizar los siguientes servicios:\n`;
     seleccionados.forEach((s) => {
       mensaje += `- ${s.emoji} ${s.nombre}: ${s.precio.toLocaleString(
@@ -100,16 +99,5 @@ document.addEventListener("DOMContentLoaded", () => {
     whatsappBtn.href = `https://wa.me/573123456789?text=${encodeURIComponent(
       mensaje
     )}`;
-  }
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".nav-links");
-
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", function () {
-      this.classList.toggle("active");
-      navLinks.classList.toggle("active");
-    });
   }
 });
