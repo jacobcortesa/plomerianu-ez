@@ -1,4 +1,6 @@
-/* ESTILOS GLOBALES Y RESET */
+/* =================================================
+   RESET Y ESTILOS GLOBALES
+   ================================================= */
 *,
 *::before,
 *::after {
@@ -7,6 +9,11 @@
   box-sizing: border-box;
 }
 
+.nav-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
 body {
   font-family: "Roboto", sans-serif;
   line-height: 1.6;
@@ -32,7 +39,9 @@ a:hover {
   color: #0056b3;
 }
 
-/* PALETA DE COLORES */
+/* =================================================
+   PALETA DE COLORES
+   ================================================= */
 :root {
   --primary-color: #007bff;
   --secondary-color: #6c757d;
@@ -42,7 +51,9 @@ a:hover {
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-/* ESTILOS DEL ENCABEZADO (HEADER) Y NAVEGACIÓN (NAV) */
+/* =================================================
+   ENCABEZADO Y NAVEGACIÓN
+   ================================================= */
 header {
   background: #fff;
   box-shadow: 0 2px 5px var(--shadow-color);
@@ -56,30 +67,168 @@ nav {
   margin: 0 auto;
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
+/* Marca (nombre) */
 nav strong {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
   color: var(--primary-color);
 }
 
-nav div a {
+/* Logo móvil junto a la marca */
+.mobile-logo {
+  margin-left: 1rem;
+}
+
+.mobile-logo img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 2px 6px var(--shadow-color);
+  object-fit: cover;
+}
+
+/* Contenedor de enlaces de navegación */
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
   margin-left: 1rem;
   padding: 0.5rem 1rem;
   border: 1px solid var(--primary-color);
   border-radius: 5px;
   color: var(--primary-color);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-nav div a:hover {
+.nav-links a:hover {
   background-color: var(--primary-color);
   color: #fff;
 }
 
-/* ESTILOS DEL PIE DE PÁGINA (FOOTER) */
+/* HEADER Y NAVEGACIÓN */
+header {
+  background-color: var(--background-color);
+  box-shadow: 0 2px 5px var(--shadow-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+.brand-slogan .brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+.mobile-logo img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 2px 6px var(--shadow-color);
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius);
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+.nav-links a:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/* SECCIÓN DE SERVICIOS EN TABLA */
+.services-table-wrapper {
+  max-width: 1000px;
+  margin: 4rem auto 2rem;
+  padding: 0 2rem;
+}
+.services-table-wrapper h2 {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.services-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2rem;
+}
+.services-table td {
+  background-color: var(--background-color);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  vertical-align: top;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.services-table td:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px var(--shadow-color);
+}
+.services-table img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+}
+.services-table h3 {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+.services-table p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* =================================================
+   PIE DE PÁGINA
+   ================================================= */
 footer {
   background-color: #003b6f;
   color: #fff;
@@ -93,7 +242,9 @@ footer p {
   margin-bottom: 0.5rem;
 }
 
-/* ESTILOS DEL BOTÓN FLOTANTE DE WHATSAPP */
+/* =================================================
+   BOTÓN FLOTANTE DE WHATSAPP
+   ================================================= */
 .whatsapp-btn {
   position: fixed;
   bottom: 2rem;
@@ -103,12 +254,14 @@ footer p {
   justify-content: center;
   background-color: #25d366;
   color: #fff;
-  padding: 1rem 1.5rem;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   text-decoration: none;
-  font-size: 1.2rem;
-  box-shadow: 0 2px 5px var(--shadow-color);
+  font-size: 1.75rem;
+  box-shadow: 0 4px 8px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 200;
 }
 
 .whatsapp-btn:hover {
@@ -116,7 +269,9 @@ footer p {
   box-shadow: 0 5px 10px var(--shadow-color);
 }
 
-/* ESTILOS DE LA PÁGINA DE SERVICIOS (SERVICIOS.HTML) */
+/* =================================================
+   SECCIÓN DE SERVICIOS (SERVICIOS.HTML)
+   ================================================= */
 .services-grid-container {
   max-width: 1200px;
   margin: 4rem auto;
@@ -265,12 +420,22 @@ footer p {
   font-size: 1.2rem;
 }
 
-/* Responsive */
+/* =================================================
+   MEDIA QUERIES
+   ================================================= */
+@media (max-width: 992px) {
+  .services-grid-container {
+    padding: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
+  /* Reajuste de títulos */
   .section-title {
     font-size: 2rem;
   }
 
+  /* Grid a 1 columna */
   .services-grid {
     grid-template-columns: 1fr;
   }
@@ -279,9 +444,9 @@ footer p {
     height: 200px;
   }
 
-  /* Menú hamburguesa (solo CSS para mostrar/ocultar) */
+  /* Menú hamburguesa */
   .menu-toggle {
-    display: none;
+    display: flex;
     flex-direction: column;
     height: 20px;
     justify-content: space-between;
@@ -296,11 +461,7 @@ footer p {
     transition: all 0.3s ease;
   }
 
-  .nav-links {
-    display: flex;
-    align-items: center;
-  }
-
+  /* Nav-links en móvil */
   .nav-links {
     display: none;
     flex-direction: column;
@@ -313,22 +474,11 @@ footer p {
     padding: 1rem;
   }
 
-  .nav-links a {
-    margin: 0.5rem 0;
-    display: block;
-    text-align: center;
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
-
-  /* Estilos para cuando el menú está activo (necesitaría JS para la clase "active") */
   .nav-links.active {
     display: flex;
   }
 
-  /* Rotar las líneas del menú hamburguesa cuando está activo (necesitaría JS) */
+  /* Transformación del ícono hamburger al abrir */
   .menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
   }
@@ -345,32 +495,6 @@ footer p {
     flex-direction: column;
     padding: 2rem 1rem;
   }
-
-  .cotizacion-container {
-    padding: 1rem;
-  }
-
-  .cotizacion-form {
-    width: 100%;
-  }
-
-  .feature {
-    flex-direction: column;
-  }
-
-  .features {
-    grid-template-columns: 1fr;
-  }
-
-  nav strong {
-    align-items: flex-start;
-  }
-
-  .cotizacion-botones a {
-    display: block;
-    margin: 1rem 0;
-    text-align: center;
-  }
 }
 
 @media (max-width: 480px) {
@@ -381,4 +505,14 @@ footer p {
   .hero p {
     font-size: 1rem;
   }
+}
+.servicio-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 4px var(--shadow-color);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
 }

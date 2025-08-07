@@ -1,51 +1,94 @@
+// ==================== SLIDER MODO CINE ====================
 document.addEventListener("DOMContentLoaded", function () {
-  // Datos de los servicios (puedes obtenerlos de un archivo JSON o una API)
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".slide");
+
+  function showSlide(index) {
+    slides.forEach((slide) => slide.classList.remove("active"));
+    slides[index].classList.add("active");
+  }
+
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }, 5000); //esto aca es el time en milisegundos, 5000 = 5 segundos   //
+});
+
+// ==================== MENÚ HAMBURGUESA ====================
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  menuToggle.addEventListener("click", function () {
+    this.classList.toggle("active");
+    navLinks.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", function () {
+      if (window.innerWidth <= 768) {
+        menuToggle.classList.remove("active");
+        navLinks.classList.remove("active");
+      }
+    });
+
+    const currentPage = location.pathname.split("/").pop();
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+});
+
+// ==================== COTIZADOR DINÁMICO ====================
+document.addEventListener("DOMContentLoaded", function () {
   const serviciosData = [
     {
       id: 1,
       nombre: "Reparación de Fugas",
       descripcion:
         "Detección y reparación de fugas de agua en tuberías, baños, etc.",
-      precio: 200000, // Precio en COP
+      precio: 200000,
     },
     {
       id: 2,
       nombre: "Instalación de Grifos",
       descripcion:
         "Instalación profesional de grifos en cocinas, baños y fregaderos.",
-      precio: 140000, // Precio en COP
+      precio: 140000,
     },
     {
       id: 3,
       nombre: "Instalación de Radiadores",
       descripcion:
         "Montaje, conexión y puesta en marcha de radiadores de calefacción.",
-      precio: 360000, // Precio en COP
+      precio: 360000,
     },
     {
       id: 4,
       nombre: "Desatascos Urgentes",
       descripcion:
         "Servicio rápido para desatascar tuberías, desagües, inodoros y fregaderos.",
-      precio: 240000, // Precio en COP
+      precio: 240000,
     },
     {
       id: 5,
       nombre: "Reparación de Cisternas",
       descripcion:
         "Reparación o sustitución de mecanismos de cisternas de WC que pierden agua.",
-      precio: 160000, // Precio en COP
+      precio: 160000,
     },
     {
       id: 6,
       nombre: "Instalación de Calentadores",
       descripcion:
         "Montaje e instalación de calentadores de gas o eléctricos, incluyendo conexiones.",
-      precio: 480000, // Precio en COP
+      precio: 480000,
     },
   ];
 
   const serviciosLista = document.getElementById("servicios-lista");
+  if (!serviciosLista) return;
+
   const serviciosSeleccionados = document.getElementById(
     "servicios-seleccionados"
   );
@@ -58,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let serviciosSeleccionadosArray = [];
   let total = 0;
 
-  // Función para mostrar los servicios en la lista
   function mostrarServicios() {
     serviciosData.forEach((servicio) => {
       const servicioItem = document.createElement("div");
@@ -98,7 +140,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Función para actualizar el resumen de la cotización
   function actualizarResumen() {
     serviciosSeleccionados.innerHTML = "";
     serviciosSeleccionadosArray.forEach((servicio) => {
@@ -121,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Función para generar el mensaje de WhatsApp
   function generarMensajeWhatsApp() {
     const nombre = nombreInput.value || "Cliente";
     const fecha = fechaInput.value || new Date().toLocaleDateString();
@@ -135,75 +175,25 @@ document.addEventListener("DOMContentLoaded", function () {
       mensaje += "No se han seleccionado servicios.\n";
     } else {
       serviciosSeleccionadosArray.forEach((servicio) => {
-        mensaje += `- ${servicio.nombre} - ${servicio.precio} €\n`;
+        mensaje += `- ${servicio.nombre} - ${servicio.precio.toLocaleString(
+          "es-CO"
+        )} COP\n`;
       });
-      mensaje += `\nTotal: ${total.toFixed(2)} €\n`;
+      mensaje += `\nTotal: ${total.toLocaleString("es-CO")} COP\n`;
     }
 
     mensaje += `\n¡Espero su respuesta!`;
 
-    const url = `https://codigotvjvs.com/text=${encodeURIComponent(mensaje)}`;
+    const url = `https://wa.me/573123456789?text=${encodeURIComponent(
+      mensaje
+    )}`;
     window.open(url, "_blank");
   }
 
-  // Evento para el botón de WhatsApp
   whatsappCotizacionBtn.addEventListener("click", function (e) {
     e.preventDefault();
     generarMensajeWhatsApp();
   });
 
-  // Mostrar los servicios al cargar la página
   mostrarServicios();
-});
-
-
-//aqui es ml mas nuevo//
-// Control del menú hamburguesa
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    menuToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-    
-    // Cerrar menú al hacer clic en un enlace (solo en móvil)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            if(window.innerWidth <= 768) {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
-    });
-    
-    // Marcar página activa
-    // Control del menú hamburguesa
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    menuToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-    
-    // Cerrar menú al hacer clic en un enlace (solo en móvil)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            if(window.innerWidth <= 768) {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
-    });
-    
-    // Marcar página activa
-    const currentPage = location.pathname.split('/').pop();
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        if(link.getAttribute('href') === currentPage) {
-            link.classList.add('active');
-        }
-    });
 });
