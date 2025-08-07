@@ -131,21 +131,35 @@ nav {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
+  align-items: stretch;
 }
 
 .service-item {
   background: #ffffff;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .service-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .service-image {
@@ -158,6 +172,8 @@ nav {
   height: 250px;
   object-fit: cover;
   transition: transform 0.5s ease;
+  border: 3px solid var(--primary-color);
+  border-radius: 10px;
 }
 
 .service-item:hover .service-image img {
@@ -205,13 +221,19 @@ nav {
 }
 
 .service-description {
+  margin-bottom: 1rem;
   color: #555;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
 }
 
 .service-price-container {
   margin-bottom: 1.5rem;
+  border: 2px solid var(--primary-color);
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #fefefe;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .price {
@@ -231,6 +253,7 @@ nav {
   margin-top: 0.25rem;
 }
 
+/* BOTÓN WHATSAPP SERVICIO */
 .whatsapp-btn-service {
   display: inline-flex;
   align-items: center;
@@ -259,19 +282,19 @@ nav {
   position: fixed;
   bottom: 2.5rem;
   right: 2.5rem;
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   background-color: var(--whatsapp-color);
   color: #fff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.75rem;
-  box-shadow: 0 4px 8px var(--shadow-color);
+  font-size: 1.6rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: background-color 0.3s ease;
-  text-decoration: none;
   z-index: 200;
+  text-decoration: none;
 }
 
 .whatsapp-btn:hover {
@@ -293,7 +316,7 @@ footer a {
   text-decoration: underline;
 }
 
-/* RESPONSIVE SERVICIOS */
+/* RESPONSIVE NAV & SERVICIOS */
 @media (max-width: 992px) {
   .services-grid-container {
     padding: 1rem;
@@ -312,10 +335,7 @@ footer a {
   .service-image img {
     height: 200px;
   }
-}
 
-/* boton comentario */
-@media (max-width: 768px) {
   nav {
     flex-direction: column;
     align-items: flex-start;
@@ -342,77 +362,4 @@ footer a {
   .nav-links.active {
     display: flex;
   }
-
-##/boton d/e .whatsapp-btn//
-
-.whatsapp-btn {
-  position: fixed;
-  bottom: 2.5rem;
-  right: 2.5rem;
-  width: 60px;
-  height: 60px;
-  background-color: var(--whatsapp-color);
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.6rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.3s ease;
-  z-index: 200;
-  text-decoration: none;
 }
-
-.whatsapp-btn:hover {
-  background-color: #1da851;
-}
-.service-item {
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.service-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-.price {
-  font-size: 1rem;
-  color: #fff;
-  background-color: var(--accent-color);
-  display: inline-block;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-weight: 600;
-  margin-top: 0.5rem;
-}
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  align-items: stretch;
-}.service-description {
-  margin-bottom: 1rem;
-  color: #555;
-  line-height: 1.6;
-  font-size: 0.95rem;
-}
-.service-item {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s ease forwards;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
