@@ -1,6 +1,4 @@
-/* ==============================================
-   RESET Y BASE
-   ============================================== */
+/* RESET Y BASE */
 *,
 *::before,
 *::after {
@@ -31,9 +29,7 @@ body {
   --radius: 0.5rem;
 }
 
-/* ==============================================
-   HEADER Y NAVEGACIÓN
-   ============================================== */
+/* HEADER Y NAVEGACIÓN */
 header {
   background-color: var(--background-color);
   box-shadow: 0 2px 5px var(--shadow-color);
@@ -77,6 +73,16 @@ nav {
   transition: all 0.3s ease;
 }
 
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
 .brand-slogan .brand {
   font-size: 1.8rem;
   font-weight: bold;
@@ -113,6 +119,7 @@ nav {
   color: #fff;
 }
 
+/* MENÚ RESPONSIVE */
 @media (max-width: 768px) {
   .menu-toggle {
     display: flex;
@@ -139,23 +146,9 @@ nav {
   .nav-links.active {
     display: flex;
   }
-
-  .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
 }
 
-/* ==============================================
-   SERVICIOS
-   ============================================== */
+/* SERVICIOS */
 .services-grid-container {
   max-width: 1200px;
   margin: 4rem auto;
@@ -305,6 +298,46 @@ nav {
   font-size: 1.2rem;
 }
 
+/* WHATSAPP FLOTANTE */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  width: 64px;
+  height: 64px;
+  background-color: var(--whatsapp-color);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.75rem;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  z-index: 200;
+}
+
+.whatsapp-btn:hover {
+  background-color: #1da851;
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--primary-dark);
+  color: #fff;
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-top: 4rem;
+  font-size: 1rem;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* RESPONSIVE SERVICIOS */
 @media (max-width: 992px) {
   .services-grid-container {
     padding: 1rem;
