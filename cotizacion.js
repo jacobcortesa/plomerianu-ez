@@ -1,4 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ==================== MENÚ HAMBURGUESA ====================
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function () {
+      this.classList.toggle("active");
+      navLinks.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", function () {
+        if (window.innerWidth <= 768) {
+          menuToggle.classList.remove("active");
+          navLinks.classList.remove("active");
+        }
+      });
+
+      const currentPage = location.pathname.split("/").pop();
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  }
+
+  // ==================== COTIZACIÓN ====================
   const servicios = [
     { nombre: "Reparación de Fugas", precio: 200000, emoji: "💧" },
     { nombre: "Instalación de Grifos", precio: 140000, emoji: "🚰" },
@@ -24,11 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
       <input type="checkbox" id="servicio${index}" value="${
       servicio.precio
     }" data-nombre="${servicio.nombre}" data-emoji="${servicio.emoji}">
-      <label for="servicio${index}">${servicio.emoji} ${
-      servicio.nombre
-    } - <span class="price">${servicio.precio.toLocaleString(
-      "es-CO"
-    )} COP</span></label>
+      <label for="servicio${index}">${servicio.emoji} ${servicio.nombre} -
+        <span class="price">${servicio.precio.toLocaleString(
+          "es-CO"
+        )} COP</span>
+      </label>
     `;
 
     contenedorServicios.appendChild(div);
@@ -54,9 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
         seleccionados.push({ nombre, precio, emoji });
 
         const li = document.createElement("li");
-        li.innerHTML = `${emoji} ${nombre} - <span class="price">${precio.toLocaleString(
-          "es-CO"
-        )} COP</span>`;
+        li.innerHTML = `${emoji} ${nombre} -
+          <span class="price">${precio.toLocaleString("es-CO")} COP</span>`;
         serviciosSeleccionados.appendChild(li);
       }
     });
