@@ -133,6 +133,7 @@ nav {
   align-items: center;
   gap: 1.5rem;
 }
+/* === MENÚ HAMBURGUESA (COMPATIBLE CON INICIO Y COTIZACIÓN) === */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -143,12 +144,57 @@ nav {
   border: none;
   cursor: pointer;
 }
+
 .menu-toggle span {
   display: block;
   height: 3px;
   background-color: var(--primary-color);
   border-radius: 2px;
+  transition: all 0.3s ease;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    padding: 1rem;
+    z-index: 99;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
 .brand-slogan .brand {
   font-size: 1.8rem;
   font-weight: bold;
@@ -444,75 +490,3 @@ footer p {
     height: 200px;
   }
 
-  /* Menú hamburguesa */
-  .menu-toggle {
-    display: flex;
-    flex-direction: column;
-    height: 20px;
-    justify-content: space-between;
-    cursor: pointer;
-  }
-
-  .menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color);
-    transition: all 0.3s ease;
-  }
-
-  /* Nav-links en móvil */
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    padding: 1rem;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  /* Transformación del ícono hamburger al abrir */
-  .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-
-  nav {
-    flex-direction: column;
-    padding: 2rem 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-}
-.servicio-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #f9f9f9;
-  border-radius: var(--radius);
-  box-shadow: 0 2px 4px var(--shadow-color);
-  padding: 1rem;
-  margin-bottom: 0.75rem;
-}
