@@ -96,11 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     mensaje += `\nTotal: ${total.toLocaleString("es-CO")} COP`;
 
-    whatsappBtn.href = `https://wa.me/message/RBNUGUTC7FWZM1?text=${encodeURIComponent(
+    whatsappBtn.href = `https://wa.me/573123456789?text=${encodeURIComponent(
       mensaje
     )}`;
   }
-
-  // ✅ Llamar al iniciar para asegurar el enlace
-  actualizarResumen();
 });
