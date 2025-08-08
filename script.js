@@ -165,7 +165,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function generarMensajeWhatsApp() {
     const nombre = nombreInput.value || "Cliente";
     const fecha = fechaInput.value || new Date().toLocaleDateString();
-    const numeroCotizacion = numeroCotizacionInput.value || "N/A";
+    const numeroCotizacion =
+      numeroCotizacionInput.value || `COT-${Date.now().toString().slice(-6)}`; // ej: COT-123456
 
     let mensaje = `¡Hola Jacob!\n\nSoy ${nombre} y me interesa la siguiente cotización:\n`;
     mensaje += `Fecha: ${fecha}\n`;
