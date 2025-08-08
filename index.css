@@ -400,3 +400,100 @@ footer a {
   max-width: 600px;
   margin: 0 auto; /* centra horizontalmente si tiene ancho limitado */
 }
+
+/* HERO SLIDER - Versión mejorada con aspect-ratio y borde azul */
+/* Este bloque define el slider principal (hero-slider) con un aspecto de cine (16:9), borde azul y estilos visuales mejorados */
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  aspect-ratio: 16 / 9; /* Mantiene proporción 16:9 para modo cine */
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  margin: 2rem auto;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 0;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 4px solid var(--primary-color); /* Borde azul para resaltar la imagen */
+}
+@media (max-width: 768px) {
+  .hero-slider {
+    aspect-ratio: 4 / 3;
+    height: auto;
+    margin: 1.5rem auto;
+  }
+
+  .slide img {
+    border-width: 3px;
+  }
+}
+/* === HERO SLIDER === */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  aspect-ratio: 16 / 9; /* mantiene proporción perfecta en todas las pantallas */
+  margin: 2rem auto;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  background-color: #fff;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 0;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* llena el contenedor sin deformarse */
+  object-position: center;
+  border-radius: 0.5rem;
+}

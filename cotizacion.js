@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     mensaje += `\nTotal: ${total.toLocaleString("es-CO")} COP`;
 
-    whatsappBtn.href = `https://wa.me/573123456789?text=${encodeURIComponent(
+    whatsappBtn.href = `https://wa.me/573167351176?text=${encodeURIComponent(
       mensaje
     )}`;
   }
