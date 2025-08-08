@@ -514,3 +514,14 @@ footer a {
     box-shadow: 0 4px 8px var(--shadow-color);
   }
 }
+
+/*Media queries para dispositivos móviles*/
+@media (max-width: 768px) {
+  .brand-slogan .brand {
+    font-size: 1.2rem;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
