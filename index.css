@@ -525,3 +525,18 @@ footer a {
     white-space: nowrap;
   }
 }
+
+/* Ajuste especial para móviles - Galería */
+@media (max-width: 768px) {
+  .galeria {
+    grid-template-columns: 1fr; /* una imagen por fila */
+    gap: 1rem;
+  }
+
+  .galeria img {
+    width: 100%;
+    height: 250px; /* fija una altura consistente */
+    object-fit: cover; /* evita que se deforme */
+    object-position: center;
+  }
+}
