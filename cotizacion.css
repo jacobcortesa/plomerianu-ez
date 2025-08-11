@@ -370,58 +370,7 @@ footer {
   margin-top: 4rem;
   font-size: 0.9rem;
 }
-  box-shadow: 0 2px 5px var(--shadow-color);
-}
-.whatsapp-btn:hover {
-  background-color: #1da851;
-}
-  box-shadow: 0 4px 8px var(--shadow-color);
-}
-.whatsapp-btn:hover {
-  background-color: #1da851;
-}
-  box-shadow: 0 2px 5px var(--shadow-color);
-}
-  .whatsapp-btn:hover {
-  background-color: #1da851;
-}
-  box-shadow: 0 4px 8px var(--shadow-color);
-}
-  .whatsapp-btn:hover {
-  background-color: #1da851;
-}
-  box-shadow: 0 2px 5px var(--shadow-color);
-}
-  .whatsapp-btn:hover {
-  background-color: #1da851;
-}
-  box-shadow: 0 4px 8px var(--shadow-color);
-}
-  .whatsapp-btn:hover {
-  background-color: #1da851;
-}
-  box-shadow: 0 2px 5px var(--shadow-color);
-}
-  .whatsapp-btn:hover {
-  background-color: #1da851;
-}
-  box-shadow: 0 4px 8px var(--shadow-color);
-}
-  .whatsapp-btn:hover {
-  background-color: #1da851;
-}
-  box-shadow: 0 2px 5px var(--shadow-color);
-}
-  .whatsapp-btn:hover {
-  background-color: #1da851;
-}
-  box-shadow: 0 4px 8px var(--shadow-color);
-}
-  .whatsapp-btn:hover {
-  background-color: #1da851;
-}
-  box-shadow: 0 2px 5px var(--shadow-color);
-}
+
 /* ==== MEJORA VISUAL DE LA COTIZACIÓN ==== */
 
 /* Títulos */
@@ -588,4 +537,40 @@ footer {
   .menu-toggle {
     display: flex;
   }
+}
+
+/* botones iconos de arriba incio y eso*/
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* espacio entre icono y texto */
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #0056b3;
+}
+
+.nav-links i {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.nav-links a:hover i {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Efecto al presionar */
+.nav-links a:active i {
+  transform: scale(0.9);
 }

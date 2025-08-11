@@ -575,3 +575,111 @@ footer a {
 .nav-links a:active i {
   transform: scale(0.9);
 }
+
+/* ===== Blob nav links corregido (no invade otros elementos) ===== */
+nav {
+  position: relative;
+  z-index: 200;
+} /* asegura que el nav esté por encima */
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Enlace con blob (usa class="blob-link") */
+.nav-links .blob-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  overflow: visible; /* permitimos mostrar el ::before justo alrededor */
+  z-index: 1; /* mantiene el enlace por encima del pseudo */
+  -webkit-tap-highlight-color: transparent;
+  transition: color 150ms ease;
+}
+
+/* Icono pequeño y con transición */
+.nav-links .blob-link i {
+  font-size: 0.98rem;
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 120ms ease, color 120ms ease;
+  color: var(--primary-color);
+}
+
+/* Pseudo-elemento reducido: apenas un "halo" justo detrás del enlace */
+.nav-links .blob-link::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* tamaño ligeramente mayor que el propio enlace */
+  width: calc(100% + 12px);
+  height: calc(100% + 8px);
+  transform: translate(-50%, -50%) scale(0);
+  background: var(--primary-color);
+  border-radius: 999px;
+  z-index: -1; /* siempre detrás del contenido del enlace */
+  opacity: 0.96;
+  transition: transform 180ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 120ms ease;
+  pointer-events: none; /* no interfiere con clicks */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* Aparición inmediata al interactuar (hover / focus / touch active) */
+.nav-links .blob-link:hover,
+.nav-links .blob-link:focus,
+.nav-links .blob-link:active {
+  color: #fff;
+  outline: none;
+}
+
+.nav-links .blob-link:hover::before,
+.nav-links .blob-link:focus::before,
+.nav-links .blob-link:active::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Icon animation al instante */
+.nav-links .blob-link:hover i,
+.nav-links .blob-link:focus i,
+.nav-links .blob-link:active i {
+  transform: translateY(-3px) scale(1.07);
+  color: #fff;
+}
+
+/* Tacto (active) más rápido */
+.nav-links .blob-link:active::before {
+  transition-duration: 110ms;
+  transform: translate(-50%, -50%) scale(0.98);
+}
+
+/* Si tienes link activo (current page) */
+.nav-links .blob-link.active {
+  color: #fff;
+}
+.nav-links .blob-link.active::before {
+  transform: translate(-50%, -50%) scale(1);
+  background: var(--primary-color);
+}
+
+/* RESPONSIVE: que no rompa en móvil */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 8px;
+  }
+  .nav-links .blob-link {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+  .nav-links .blob-link i {
+    font-size: 1.03rem;
+  }
+}
