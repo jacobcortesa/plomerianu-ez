@@ -43,7 +43,8 @@
     display: block;
     height: 3px;
     width: 100%;
-    background: #0056a3; /* Color del ícono */
+    background: var(--primary-color); /* mismo color del index */
+    border-radius: 2px;
     transition: all 0.3s ease;
   }
 
@@ -57,7 +58,7 @@
 
   .brand {
     font-size: 1.2rem;
-    color: #0056a3;
+    color: var(--primary-color);
     font-weight: bold;
     white-space: nowrap;
   }
@@ -86,25 +87,88 @@
     top: 100%;
     left: 0;
     z-index: 999;
+    gap: 8px;
   }
 
   .nav-links.active {
     display: flex;
   }
 
-  .nav-links a {
-    padding: 1rem;
-    border-bottom: 1px solid #eee;
-    width: 100%;
-    text-align: left;
-    color: #0056a3;
-    font-weight: 500;
+  /* Botones con blob-link como en Inicio */
+  .nav-links .blob-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    color: var(--primary-color);
+    font-weight: 600;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    overflow: visible;
+    z-index: 1;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 150ms ease;
+    width: 100%;
   }
 
-  .nav-links a:hover {
-    background-color: #f0f0f0;
+  .nav-links .blob-link i {
+    font-size: 1.05rem;
+    display: inline-block;
+    transform-origin: center;
+    transition: transform 120ms ease, color 120ms ease;
+    color: var(--primary-color);
+  }
+
+  .nav-links .blob-link::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: calc(100% + 12px);
+    height: calc(100% + 8px);
+    transform: translate(-50%, -50%) scale(0);
+    background: var(--primary-color);
+    border-radius: 999px;
+    z-index: -1;
+    opacity: 0.96;
+    transition: transform 180ms cubic-bezier(0.2, 0.9, 0.2, 1),
+      opacity 120ms ease;
+    pointer-events: none;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  }
+
+  .nav-links .blob-link:hover,
+  .nav-links .blob-link:focus,
+  .nav-links .blob-link:active {
+    color: #fff;
+    outline: none;
+  }
+
+  .nav-links .blob-link:hover::before,
+  .nav-links .blob-link:focus::before,
+  .nav-links .blob-link:active::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .nav-links .blob-link:hover i,
+  .nav-links .blob-link:focus i,
+  .nav-links .blob-link:active i {
+    transform: translateY(-3px) scale(1.07);
+    color: #fff;
+  }
+
+  .nav-links .blob-link:active::before {
+    transition-duration: 110ms;
+    transform: translate(-50%, -50%) scale(0.98);
+  }
+
+  .nav-links .blob-link.active {
+    color: #fff;
+  }
+  .nav-links .blob-link.active::before {
+    transform: translate(-50%, -50%) scale(1);
+    background: var(--primary-color);
   }
 
   /* === AJUSTE DE PÁGINA PARA HEADER FIJO === */
