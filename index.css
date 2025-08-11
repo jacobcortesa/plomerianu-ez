@@ -540,3 +540,38 @@ footer a {
     object-position: center;
   }
 }
+
+/* Ajustes para la sección de iconos de la pagina de incio los de arriba*/
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* espacio entre icono y texto */
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #0056b3;
+}
+
+.nav-links i {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.nav-links a:hover i {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Efecto al presionar */
+.nav-links a:active i {
+  transform: scale(0.9);
+}
