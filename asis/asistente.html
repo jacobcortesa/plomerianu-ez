@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asistente - Ferreservicios</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <!-- Estilos del asistente -->
+    <!-- Estilos globales -->
+    <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="../mobile-styles.css" />
+    <link rel="stylesheet" href="asis.css" />
+  </head>
+  <body>
+    <!-- Encabezado -->
+    <header>
+      <nav>
+        <div class="nav-header">
+          <!-- Botón hamburguesa -->
+          <button class="menu-toggle" aria-label="Menú móvil">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <!-- Marca -->
+          <div class="brand-slogan">
+            <div class="brand">Ferreservicios</div>
+          </div>
+
+          <!-- Logo -->
+          <div class="mobile-logo">
+            <img src="../img/index/jhon (1).png" alt="Logo" />
+          </div>
+        </div>
+
+        <!-- Enlaces -->
+        <div class="nav-links">
+          <a href="../index.html" class="blob-link">
+            <i class="fas fa-home"></i><span>Inicio</span>
+          </a>
+          <a href="../servicios.html" class="blob-link">
+            <i class="fas fa-wrench"></i><span>Servicios</span>
+          </a>
+          <a href="../cotizacion.html" class="blob-link">
+            <i class="fas fa-file-invoice-dollar"></i><span>Cotización</span>
+          </a>
+          <a href="asistente.html" class="blob-link">
+            <i class="fas fa-robot"></i><span>Asistente</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Botones rápidos -->
+    <div class="quick-replies">
+      <button onclick="sendQuickReply('Servicios')">📋 Servicios</button>
+      <button onclick="sendQuickReply('Precios')">💰 Precios</button>
+      <button onclick="sendQuickReply('Ubicación')">📍 Ubicación</button>
+      <button onclick="sendQuickReply('Contacto')">📞 Contacto</button>
+    </div>
+
+    <!-- Caja de entrada -->
+    <div class="input-container">
+      <input type="text" id="userInput" placeholder="Escribe tu mensaje..." />
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../script.js"></script>
+    <script src="asis.js"></script>
+  </body>
+</html>
