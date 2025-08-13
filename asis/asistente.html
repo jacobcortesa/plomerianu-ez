@@ -57,30 +57,45 @@
       </nav>
     </header>
 
-    <!-- Contenedor principal del chat -->
+    <!-- CHAT — reemplaza tu bloque de quick-replies + input por TODO esto -->
     <div class="chat-wrapper">
-      <!-- Fondo con emoji animado -->
-      <div class="chat-bg"></div>
+      <!-- Fondo con emoji animado (no bloquea clics) -->
+      <div class="chat-bg" aria-hidden="true"></div>
 
-      <!-- Chat -->
-      <div id="chat" class="chat-container"></div>
+      <!-- Contenedor de mensajes -->
+      <div id="chat" class="chat-container" role="log" aria-live="polite"></div>
 
       <!-- Botones rápidos -->
       <div class="quick-replies">
-        <button onclick="sendQuickReply('Servicios')">📋 Servicios</button>
-        <button onclick="sendQuickReply('Precios')">💰 Precios</button>
-        <button onclick="sendQuickReply('Ubicación')">📍 Ubicación</button>
-        <button onclick="sendQuickReply('Contacto')">📞 Contacto</button>
+        <button type="button" onclick="sendQuickReply('Servicios')">
+          📋 Servicios
+        </button>
+        <button type="button" onclick="sendQuickReply('Precios')">
+          💰 Precios
+        </button>
+        <button type="button" onclick="sendQuickReply('Ubicación')">
+          📍 Ubicación
+        </button>
+        <button type="button" onclick="sendQuickReply('Contacto')">
+          📞 Contacto
+        </button>
       </div>
 
       <!-- Caja de entrada -->
       <div class="input-container">
-        <input type="text" id="userInput" placeholder="Escribe tu mensaje..." />
-        <button onclick="sendMessage()">Enviar</button>
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Escribe tu mensaje..."
+          autocomplete="off"
+        />
+        <button id="sendBtn" type="button">Enviar</button>
       </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="asis.js"></script>
+    <!-- Scripts (al final del body, con defer para evitar timing issues) -->
+
+    <script src="asis.js" defer></script>
+    <script src="../script.js" defer></script>
   </body>
 </html>
