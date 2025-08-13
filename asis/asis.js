@@ -1,10 +1,9 @@
 (function () {
-  // Esperar a que el DOM esté listo para evitar nulls
   document.addEventListener("DOMContentLoaded", () => {
-    // Obtener/crear elementos de forma segura
     let chat = document.getElementById("chat");
     const wrapper = document.querySelector(".chat-wrapper");
 
+    // Si no existe el contenedor de chat, crearlo
     if (!chat && wrapper) {
       chat = document.createElement("div");
       chat.id = "chat";
@@ -15,7 +14,7 @@
     const input = document.getElementById("userInput");
     const sendBtn = document.getElementById("sendBtn");
 
-    // Función para añadir mensajes
+    // Función para añadir mensajes al chat
     function appendMessage(text, sender) {
       if (!chat) return;
       const msg = document.createElement("div");
@@ -42,7 +41,9 @@
         lower.includes("donde estan")
       ) {
         reply =
-          "📍 Estamos en Valledupar, Cesar.<br><a href='https://maps.app.goo.gl/' target='_blank' rel='noopener'>Abrir mapa</a>";
+          "📍 Estamos en Cra 27a #34-77, Barrio El Prado, Valledupar, Cesar.<br>" +
+          "<a href='https://www.google.com/maps?q=Cra+27a+%2334-77,+Valledupar,+Cesar' target='_blank' rel='noopener'>🗺️ Ver en Google Maps</a>" +
+          "<br><br><iframe src='https://www.google.com/maps?q=Cra+27a+%2334-77,+Valledupar,+Cesar&output=embed' width='100%' height='200' style='border:0;' allowfullscreen='' loading='lazy'></iframe>";
       } else if (
         lower.includes("contacto") ||
         lower.includes("whatsapp") ||
@@ -55,13 +56,13 @@
         reply = "Escribe tu consulta o usa los botones rápidos 👇";
       } else {
         reply =
-          "🤖 Puedo ayudarte con *Servicios*, *Precios*, *Ubicación* y *Contacto*. Usa los botones de arriba 😄";
+          "🤖 Puedo ayudarte con <b>Servicios</b>, <b>Precios</b>, <b>Ubicación</b> y <b>Contacto</b>. Usa los botones de arriba 😄";
       }
 
       appendMessage(reply, "bot");
     }
 
-    // Enviar mensaje (input + botón)
+    // Enviar mensaje
     function sendMessage() {
       if (!input) return;
       const text = input.value.trim();
@@ -73,13 +74,13 @@
       input.focus();
     }
 
-    // Respuesta rápida
+    // Enviar respuesta rápida
     function sendQuickReply(text) {
       appendMessage(text, "user");
       setTimeout(() => botReply(text), 300);
     }
 
-    // Listeners
+    // Listeners de botones y teclado
     if (sendBtn) sendBtn.addEventListener("click", sendMessage);
     if (input) {
       input.addEventListener("keydown", (e) => {
@@ -96,7 +97,7 @@
       "bot"
     );
 
-    // Exponer funciones para los onclick del HTML
+    // Exponer funciones globalmente
     window.sendMessage = sendMessage;
     window.sendQuickReply = sendQuickReply;
   });
