@@ -25,25 +25,27 @@ function sendQuickReply(text) {
 
 function botReply(userText) {
   let reply = "";
-  userText = userText.toLowerCase();
+  const lower = userText.toLowerCase();
 
-  if (userText.includes("servicio")) {
+  if (lower.includes("servicio")) {
     reply =
-      "🔧 Ofrecemos:\n- Instalación de tuberías\n- Reparación de fugas\n- Mantenimiento de sistemas\n- Desatascos\n- Reformas de baño";
-  } else if (userText.includes("precio")) {
+      "🔧 Ofrecemos:<br>- Instalación de tuberías<br>- Reparación de fugas<br>- Mantenimiento de sistemas<br>- Desatascos<br>- Reformas de baño";
+  } else if (lower.includes("precio")) {
     reply =
-      "💰 Lista de precios aproximados:\n- Instalación de tubería: $120,000 COP\n- Reparación de fuga: $80,000 COP\n- Destape de cañería: $60,000 COP\n- Reforma completa de baño: $950,000 COP\n\n*Precios sujetos a cotización exacta.*";
-  } else if (userText.includes("ubicación")) {
-    reply = "📍 Estamos en Valledupar, Cesar. Aquí puedes vernos en el mapa:";
+      "💰 Lista de precios aproximados:<br>- Instalación: $120,000 COP<br>- Reparación: $80,000 COP<br>- Destape: $60,000 COP<br>- Reforma baño: $950,000 COP<br><small>*Precios sujetos a cotización exacta.*</small>";
+  } else if (lower.includes("ubicación")) {
+    reply = "📍 Estamos en Valledupar, Cesar.";
     appendMessage(reply, "bot");
-    chat.innerHTML += `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!..."></iframe>`;
+    appendMessage(
+      `<iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="150" style="border:0;" loading="lazy"></iframe>`,
+      "bot"
+    );
     return;
-  } else if (userText.includes("contacto")) {
+  } else if (lower.includes("contacto")) {
     reply =
-      "📞 Puedes llamarnos al: 316 000 0000\n💬 O escríbenos por WhatsApp: https://wa.me/573160000000";
+      "📞 Llámanos al: 316 000 0000<br>💬 WhatsApp: <a href='https://wa.me/573160000000' target='_blank'>Click aquí</a>";
   } else {
-    reply =
-      "🤔 No entendí muy bien. Puedes seleccionar una opción rápida arriba.";
+    reply = "🤔 No entendí. Usa los botones rápidos arriba para más opciones.";
   }
 
   appendMessage(reply, "bot");

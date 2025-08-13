@@ -57,22 +57,30 @@
       </nav>
     </header>
 
-    <!-- Botones rápidos -->
-    <div class="quick-replies">
-      <button onclick="sendQuickReply('Servicios')">📋 Servicios</button>
-      <button onclick="sendQuickReply('Precios')">💰 Precios</button>
-      <button onclick="sendQuickReply('Ubicación')">📍 Ubicación</button>
-      <button onclick="sendQuickReply('Contacto')">📞 Contacto</button>
-    </div>
+    <!-- Contenedor principal del chat -->
+    <div class="chat-wrapper">
+      <!-- Fondo con emoji animado -->
+      <div class="chat-bg"></div>
 
-    <!-- Caja de entrada -->
-    <div class="input-container">
-      <input type="text" id="userInput" placeholder="Escribe tu mensaje..." />
-      <button onclick="sendMessage()">Enviar</button>
+      <!-- Chat -->
+      <div id="chat" class="chat-container"></div>
+
+      <!-- Botones rápidos -->
+      <div class="quick-replies">
+        <button onclick="sendQuickReply('Servicios')">📋 Servicios</button>
+        <button onclick="sendQuickReply('Precios')">💰 Precios</button>
+        <button onclick="sendQuickReply('Ubicación')">📍 Ubicación</button>
+        <button onclick="sendQuickReply('Contacto')">📞 Contacto</button>
+      </div>
+
+      <!-- Caja de entrada -->
+      <div class="input-container">
+        <input type="text" id="userInput" placeholder="Escribe tu mensaje..." />
+        <button onclick="sendMessage()">Enviar</button>
+      </div>
     </div>
 
     <!-- Scripts -->
-    <script src="../script.js"></script>
     <script src="asis.js"></script>
   </body>
 </html>
