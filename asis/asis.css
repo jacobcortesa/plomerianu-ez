@@ -152,7 +152,7 @@
 /* ====== MÓVIL ====== */
 @media (max-width: 768px) {
   .chat-wrapper {
-    height: calc(100vh - 140px); /* Ajuste a pantalla móvil, restando header */
+    height: calc(100vh - 140px);
     margin: 0.5rem;
   }
   .message {
@@ -160,5 +160,21 @@
   }
   .quick-replies button {
     flex: 1 1 100%;
+  }
+  /* Ajuste input y botón para móvil */
+  .input-container {
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+    padding: 0.5rem;
+  }
+  .input-container input {
+    font-size: 0.95rem;
+    padding: 0.55rem 0.8rem;
+  }
+  .input-container button {
+    min-width: auto;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
   }
 }
