@@ -41,11 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalPrecio = document.getElementById("total-precio");
   const whatsappBtn = document.getElementById("whatsapp-cotizacion");
 
-  // Renderizar servicios
+  // Campos de datos del cliente
+  const nombreInput = document.getElementById("nombre");
+  const fechaInput = document.getElementById("fecha");
+  const numeroCotizacionInput = document.getElementById("numeroCotizacion");
+
+  // Renderizar lista de servicios
   servicios.forEach((servicio, index) => {
     const div = document.createElement("div");
     div.classList.add("servicio-item");
-
     div.innerHTML = `
       <input type="checkbox" id="servicio${index}" value="${
       servicio.precio
@@ -56,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
         )} COP</span>
       </label>
     `;
-
     contenedorServicios.appendChild(div);
   });
 
@@ -88,16 +91,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
     totalPrecio.textContent = `${total.toLocaleString("es-CO")} COP`;
 
-    let mensaje = `Hola, quiero cotizar los siguientes servicios:\n`;
-    seleccionados.forEach((s) => {
-      mensaje += `- ${s.emoji} ${s.nombre}: ${s.precio.toLocaleString(
-        "es-CO"
-      )} COP\n`;
-    });
-    mensaje += `\nTotal: ${total.toLocaleString("es-CO")} COP`;
+    // Validar que haya nombre y fecha antes de armar el mensaje
+    whatsappBtn.onclick = (e) => {
+      e.preventDefault();
 
-    whatsappBtn.href = `https://wa.me/573167351176?text=${encodeURIComponent(
-      mensaje
-    )}`;
+      const nombreCliente = nombreInput.value.trim();
+      const fechaCotizacion = fechaInput.value;
+      const numeroCotizacion = numeroCotizacionInput.value;
+
+      if (!nombreCliente || !fechaCotizacion) {
+        alert("Por favor ingresa tu nombre y la fecha antes de continuar.");
+        return;
+      }
+
+      if (seleccionados.length === 0) {
+        alert("Debes seleccionar al menos un servicio.");
+        return;
+      }
+
+      // Crear mensaje para WhatsApp
+      let mensaje = `📋 *Cotización de Servicios*\n`;
+      mensaje += `👤 Nombre: ${nombreCliente}\n`;
+      mensaje += `📅 Fecha: ${fechaCotizacion}\n`;
+      mensaje += `📝 Nº Cotización: ${numeroCotizacion}\n\n`;
+
+      mensaje += `🔧 *Servicios Solicitados:*\n`;
+      seleccionados.forEach((s) => {
+        mensaje += `- ${s.emoji} ${s.nombre}: ${s.precio.toLocaleString(
+          "es-CO"
+        )} COP\n`;
+      });
+
+      mensaje += `\n💵 *Total:* ${total.toLocaleString("es-CO")} COP\n`;
+      mensaje += `\nGracias por elegirnos. ✅`;
+
+      // Redirigir a WhatsApp
+      window.open(
+        `https://wa.me/573167351176?text=${encodeURIComponent(mensaje)}`,
+        "_blank"
+      );
+    };
   }
 });
